@@ -1,0 +1,24 @@
+{    
+    "name": "fabioalvaro/chayotephp",
+    "type": "library",
+    "description": "Chayote PHP 3.0 Easy Framework",
+    "keywords": ["php","framework","easy","fabio","alvaro"],
+    "homepage": "https://github.com/fabioalvaro/chayotephp",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fabio Alvaro Pereira",
+            "email": "fabio.alvaro@gmail.com",
+            "homepage": "http://www.fabioalvaro.com.br",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "smarty/smarty": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}

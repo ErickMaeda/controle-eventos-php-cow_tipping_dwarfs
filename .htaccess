@@ -1,0 +1,63 @@
+############################################
+## default index file
+
+    DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+
+############################################
+## habilitar rewrites
+
+    Options +FollowSymLinks
+    RewriteEngine on
+
+############################################
+## forcar www
+    #RewriteCond %{HTTP_HOST} ^fabioalvaro.com.br [NC]
+    #RewriteRule ^(.*)$ http://www.fabioalvaro.com.br/$1 [L,R=301]
+
+############################################
+## Pasta raiz do projeto
+
+    #RewriteBase /
+
+############################################
+## TRACE e TRACK métodos HTTP desativados para evitar ataques XSS
+
+    RewriteCond %{REQUEST_METHOD} ^TRAC[EK]
+    RewriteRule .* - [L,R=405]
+
+############################################
+## redirecionar user agents mobile
+
+    #RewriteCond %{REQUEST_URI} !^/diretorioDoMobile/.*$
+    #RewriteCond %{HTTP_USER_AGENT} "android|blackberry|ipad|iphone|ipod|iemobile|opera mobile|palmos|webos|googlebot-mobile" [NC]
+    #RewriteRule ^(.*)$ /diretorioDoMobile/ [L,R=302]
+
+############################################
+## sempre enviar erro 404 em arquivos ausentes nestas pastas
+
+    RewriteCond %{REQUEST_URI} !^/(files)/
+
+############################################
+## nunca reescrever para arquivos existentes, diretórios e links
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+
+############################################
+## reescrever tudo sempre para index.php
+
+	RewriteRule ^(.*)$ index.php?url=$1
+
+</IfModule>
+
+############################################
+## Evitar problemas de codificação de caracteres a partir de substituições de servidores
+
+    AddDefaultCharset UTF-8
+
+## Nao permite a listagem de arquivos
+
+    Options -Indexes
