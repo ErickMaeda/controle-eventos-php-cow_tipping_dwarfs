@@ -24,11 +24,11 @@ define('EMAIL_SAC_FOX', 'sistema@fabioalvaro.com.br');//Responsavel pelo SAC FOX
  * Configuração do Banco de Dados
  */
 
-define('DBHOST', 'localhost');
+define('DBHOST', '192.168.0.63');
 define('DBPORT', '3306');
 define('DBUSER', 'root');
-define('DBPASS', 'toor');
-define('DBNAME', 'chayotedb');
+define('DBPASS', 'teste123');
+define('DBNAME', 'cowyote');
 define('DBENCODING', 'utf8');
 
 define('SMTPHOST', 'smtp.fabioalvaro.com');
