@@ -28,7 +28,7 @@ define('DBHOST', '192.168.0.63');
 define('DBPORT', '3306');
 define('DBUSER', 'root');
 define('DBPASS', 'teste123');
-define('DBNAME', 'cowyote');
+define('DBNAME', 'cowyotte');
 define('DBENCODING', 'utf8');
 
 define('SMTPHOST', 'smtp.fabioalvaro.com');
