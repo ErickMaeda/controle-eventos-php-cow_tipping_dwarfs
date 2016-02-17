@@ -20,9 +20,8 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1>{$title}</h1>
-                            <p>This example access the database.</p>                            
-                            <a href="/estado/add" class="btn btn-default" id="btn_novo">Novo Estado</a>
+                            <h1>{$title}</h1>                        
+                            <a href="/estado/insert" class="btn btn-default" id="btn_novo">Novo Estado</a>
                             <br>
                             {include file="estado/index_grid.tpl"}
                         </div>

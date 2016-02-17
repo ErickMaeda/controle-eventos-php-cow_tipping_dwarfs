@@ -6,7 +6,7 @@ class estado extends controller {
 
         //list all records
         $estado_model = new estadoModel();
-        $estado_res = $estado_model->getEstado(); //Full table Scan :( or :)         
+        $estado_res = $estado_model->getEstado('stat<>0'); //Full table Scan :( or :)         
         //send the records to template sytem
         $this->smarty->assign('listestado', $estado_res);
         $this->smarty->assign('title', 'Estados');
@@ -14,7 +14,7 @@ class estado extends controller {
         $this->smarty->display('estado/index.tpl');
     }
 
-    public function add() {
+    public function insert() {
         $this->smarty->assign('title', 'Novo Estado');
         $this->smarty->display('estado/insert.tpl');
     }
@@ -29,19 +29,18 @@ class estado extends controller {
 
     public function update() {
         $id = $this->getParam('id_estado');
-        
+
         $modelEstado = new estadoModel();
         $dados['id_estado'] = $id;
         $dados['des_estado'] = $_POST['des_estado'];
-        var_dump($dados);
         $modelEstado->updEstado($dados);
 
         header('Location: /estado');
     }
 
     public function edit() {
-       
-        
+
+
         //die();
         $id = $this->getParam('id_estado');
         $modelEstado = new estadoModel();
@@ -53,12 +52,12 @@ class estado extends controller {
     }
 
     public function delete() {
-
         $id = $this->getParam('id_estado');
         $modelEstado = new estadoModel();
         $dados['id_estado'] = $id;
-        var_dump($dados);
-        $modelEstado->delEstado($dados);
+        $dados['stat'] = 0;
+
+        $modelEstado->updEstado($dados);
 
         header('Location: /estado');
     }

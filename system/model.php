@@ -132,6 +132,17 @@ class model {
         return $data;
     }
 
+    public function readSQL($query = NULL) {
+        //echo $sql.'<hr />';
+
+        $q = $this->db->prepare($query);
+        $q->execute();
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+        $data = $q->fetchAll();
+        $this->count = count($data);
+        return $data;
+    }
+
     public function countRows() {
         return $this->count;
     }
@@ -166,6 +177,7 @@ class model {
         if ($this->_table == NULL)
             return FALSE;
         $sql = "DELETE FROM {$this->_table} WHERE {$where}";
+
         //echo $sql;die;
         $prepare = $this->db->prepare($sql);
         if ($exec) {
