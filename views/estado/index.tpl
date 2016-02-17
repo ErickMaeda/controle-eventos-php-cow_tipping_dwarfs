@@ -35,7 +35,6 @@
 
     {include file="comum/footer.tpl"}    
     
-     <script src="/files/js/color/index.js"></script>
 
     </body>
 

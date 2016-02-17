@@ -1,8 +1,67 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+class usuario extends controller {
 
+    public function index_action() {
+
+        //list all records
+        $usuario_model = new usuarioModel();
+        $usuario_res = $usuario_model->getUsuario('stat<>0'); //Full table Scan :( or :)         
+        //send the records to template sytem
+        $this->smarty->assign('listusuario', $usuario_res);
+        $this->smarty->assign('title', 'Usuarios');
+        //call the smarty
+        $this->smarty->display('usuario/index.tpl');
+    }
+
+    public function insert() {
+        $this->smarty->assign('title', 'Novo Usuario');
+        $this->smarty->display('usuario/insert.tpl');
+    }
+
+    public function save() {
+        $modelUsuario = new usuarioModel();
+        $dados['des_usuario'] = $_POST['des_usuario'];
+        $modelUsuario->setUsuario($dados);
+
+        header('Location: /usuario');
+    }
+
+    public function update() {
+        $id = $this->getParam('id_usuario');
+
+        $modelUsuario = new usuarioModel();
+        $dados['id_usuario'] = $id;
+        $dados['des_usuario'] = $_POST['des_usuario'];
+        $modelUsuario->updUsuario($dados);
+
+        header('Location: /usuario');
+    }
+
+    public function edit() {
+
+
+        //die();
+        $id = $this->getParam('id_usuario');
+        $modelUsuario = new usuarioModel();
+        $resUsuario = $modelUsuario->getUsuario('id_usuario=' . $id);
+        $this->smarty->assign('registro', $resUsuario[0]);
+        $this->smarty->assign('title', 'Atualizar Usuario');
+        //call the smarty
+        $this->smarty->display('usuario/update.tpl');
+    }
+
+    public function delete() {
+        
+        $id = $this->getParam('id_usuario');
+        $modelUsuario = new usuarioModel();
+        $dados['id_usuario'] = $id;
+        $modelUsuario->delUsuario($dados);
+
+        
+        header('Location: /usuario');
+    }
+
+}
+
+?>
