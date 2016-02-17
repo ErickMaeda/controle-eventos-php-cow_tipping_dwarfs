@@ -52,13 +52,13 @@ class estado extends controller {
     }
 
     public function delete() {
+        
         $id = $this->getParam('id_estado');
         $modelEstado = new estadoModel();
         $dados['id_estado'] = $id;
-        $dados['stat'] = 0;
+        $modelEstado->delEstado($dados);
 
-        $modelEstado->updEstado($dados);
-
+        
         header('Location: /estado');
     }
 

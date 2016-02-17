@@ -64,6 +64,7 @@ class cidade extends controller {
         $modelCidade = new cidadeModel();
         $dados['id_cidade'] = $id;
         $modelCidade->delCidade($dados);
+        
 
         header('Location: /cidade');
     }
