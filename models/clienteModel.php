@@ -7,6 +7,8 @@ class clienteModel extends model {
 
     var $tabPadrao = 'cliente';
     var $campo_chave = 'id_cliente';
+    var $tabAux = 'cliente_endereco';
+    var $campo_chave_aux = 'id_cliente_endereco';
 
     // An empty structure to create news Entitys 
     public function estrutura_vazia() {
@@ -22,9 +24,9 @@ class clienteModel extends model {
     }
 
     /** Retrieve the Entity */
-    public function getCliente($where = null) {
+    public function getCliente($where = null, $limit = null) {
         $select = array('*');
-        return $this->read($this->tabPadrao, $select, $where, null, null, null, null);
+        return $this->read($this->tabPadrao, $select, $where, null, $limit, null, null);
     }
 
     /** Save a new Entity  */
@@ -34,6 +36,20 @@ class clienteModel extends model {
 
         $id = $this->transaction(
                 $this->insert($this->tabPadrao, $array, false)
+        );
+
+        $this->commit();
+
+        return $id;
+    }
+
+    /** Save a new Entity  */
+    public function setClienteEndereco($array) {
+
+        $this->startTransaction();
+
+        $id = $this->transaction(
+                $this->insert($this->tabAux, $array, false)
         );
 
         $this->commit();
