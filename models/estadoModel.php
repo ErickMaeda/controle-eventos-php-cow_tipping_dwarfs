@@ -52,13 +52,11 @@ class estadoModel extends model {
     public function delEstado($array) {
         //Key 
         $where = $this->campo_chave . " = " . $array[$this->campo_chave];
-        $array2['active'] = 0; // Muda status para zero excluido!   
         $this->startTransaction();
-        $this->transaction($this->update($this->tabPadrao, $array2, $where));
+        $this->transaction($this->delete($this->tabPadrao, $where));
         $this->commit();
         return true;
     }
-
 }
 
 ?>

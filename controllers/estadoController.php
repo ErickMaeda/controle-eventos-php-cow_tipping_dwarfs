@@ -5,8 +5,8 @@ class estado extends controller {
     public function index_action() {
 
         //list all records
-        $model_colors = new estadoModel();
-        $estado_res = $model_colors->getEstado('active<>0'); //Full table Scan :( or :)         
+        $estado_model = new estadoModel();
+        $estado_res = $estado_model->getEstado(); //Full table Scan :( or :)         
         //send the records to template sytem
         $this->smarty->assign('listestado', $estado_res);
         $this->smarty->assign('title', 'Estados');
@@ -28,11 +28,12 @@ class estado extends controller {
     }
 
     public function update() {
-        $id = $this->getParam('id');
+        $id = $this->getParam('id_estado');
         
         $modelEstado = new estadoModel();
         $dados['id_estado'] = $id;
         $dados['des_estado'] = $_POST['des_estado'];
+        var_dump($dados);
         $modelEstado->updEstado($dados);
 
         header('Location: /estado');
@@ -40,8 +41,9 @@ class estado extends controller {
 
     public function edit() {
        
+        
         //die();
-        $id = $this->getParam('id');
+        $id = $this->getParam('id_estado');
         $modelEstado = new estadoModel();
         $resEstado = $modelEstado->getEstado('id_estado=' . $id);
         $this->smarty->assign('registro', $resEstado[0]);
@@ -52,10 +54,11 @@ class estado extends controller {
 
     public function delete() {
 
-        $id = $this->getParam('id');
+        $id = $this->getParam('id_estado');
         $modelEstado = new estadoModel();
-        $dados['id'] = $id;
-        $modelEstado->delColor($dados);
+        $dados['id_estado'] = $id;
+        var_dump($dados);
+        $modelEstado->delEstado($dados);
 
         header('Location: /estado');
     }

@@ -17,31 +17,31 @@
             <a data-toggle="collapse" data-target="#cadastro"><i class="fa fa-fw fa-edit"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i></a>
             <ul id="cadastro" class="collapse">
                 <li>
-                    <a href="/usuario.php">Usuário</a>
+                    <a href="/usuario">Usuário</a>
                 </li>
                 <li>
-                    <a href="/cliente.php">Cliente</a>
+                    <a href="/cliente">Cliente</a>
                 </li>
                 <li>
-                    <a href="/estoque.php">Estoque</a>
+                    <a href="/estoque">Estoque</a>
                 </li>
                 <li>
-                    <a href="/movimentacao.php">Movimentacao</a>
+                    <a href="/movimentacao">Movimentacao</a>
                 </li>
                 <li>
-                    <a href="/evento.php">Evento</a>
+                    <a href="/evento">Evento</a>
                 </li>
                 <li>
-                    <a href="/cidade.php">Cidade</a>
+                    <a href="/cidade">Cidade</a>
                 </li>
                 <li>
-                    <a href="/estado.php">Estado</a>
+                    <a href="/estado">Estado</a>
                 </li>
                 <li>
-                    <a href="/departamento.php">Departamento</a>
+                    <a href="/departamento">Departamento</a>
                 </li>
                 <li>
-                    <a href="/produto.php">Produto</a>
+                    <a href="/produto">Produto</a>
                 </li>
             </ul>
         </li>
