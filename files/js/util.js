@@ -20,6 +20,18 @@ function showMessage(errorText, time, type, redirect) {
     });
 }
 
+$(document).ready(function(){
+    //alert('opa');
+    
+    
+ $(".del").click(function(){
+    if (!confirm("TEM CERTEZA QUE QUER APAGAR ESSE REGISTRO!?")){
+      return false;
+    }
+  });
+
+});
+
 
 function valida_cnpj(cnpj) {
     var numeros, digitos, soma, i, resultado, pos, tamanho, digitos_iguais;
@@ -62,6 +74,7 @@ function valida_cnpj(cnpj) {
     else
         return false;
 }
+
 
 /*
  Mensagem Padrao do Bootstrap Fox

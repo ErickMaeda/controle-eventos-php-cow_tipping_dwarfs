@@ -12,7 +12,7 @@
         <div id="wrapper">
 
             <!-- Sidebar -->
-      {include file="comum/sidebar.tpl"}
+            {include file="comum/sidebar.tpl"}
             <!-- /#sidebar-wrapper -->
 
             <!-- Page Content -->
@@ -32,9 +32,8 @@
 
         </div>
         <!-- /#wrapper -->
-
-    {include file="comum/footer.tpl"}    
-    
+        {include file="comum/footer.tpl"}    
+        <script src="/files/js/util.js"></script>
 
     </body>
 
