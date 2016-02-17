@@ -27,7 +27,6 @@ class cidadeModel extends model {
     
     /** Retrieve the Entity */
     public function getCidadeEstado($query) {
-       
         return $this->readSQL($query);
     }
 
