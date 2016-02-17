@@ -30,6 +30,7 @@
                                     <input required="true" type="input" class="form-control" id="des_estado" name="des_estado" value="{$registro.des_estado}">
                                 </div>  
                                 <button type="submit" class="btn btn-default">Atualizar</button>
+                                <button type="reset" class="btn btn-default" onclick="window.history.back();">Cancelar</button>
                             </form>
                         </div>
                     </div>

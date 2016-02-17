@@ -50,6 +50,7 @@
                                 <br>
 
                                 <button type="submit" class="btn btn-default">Atualizar</button>
+                                <button type="reset" class="btn btn-default" onclick="window.history.back();">Cancelar</button>
                             </form>
                         </div>
                     </div>

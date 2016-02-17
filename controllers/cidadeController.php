@@ -33,6 +33,7 @@ class cidade extends controller {
 
     public function update() {
         $id = $this->getParam('id_cidade');
+        
         $modelCidade = new cidadeModel();
         $dados['id_cidade'] = $id;
         $dados['des_cidade'] = $_POST['des_cidade'];

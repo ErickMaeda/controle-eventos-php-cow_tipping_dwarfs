@@ -21,7 +21,9 @@ class usuario extends controller {
 
     public function save() {
         $modelUsuario = new usuarioModel();
-        $dados['des_usuario'] = $_POST['des_usuario'];
+        $dados['nome_usuario'] = $_POST['nome_usuario'];
+        $dados['email_usuario'] = $_POST['email_usuario'];
+        $dados['senha_usuario'] = $_POST['senha_usuario'];
         $modelUsuario->setUsuario($dados);
 
         header('Location: /usuario');
@@ -32,7 +34,9 @@ class usuario extends controller {
 
         $modelUsuario = new usuarioModel();
         $dados['id_usuario'] = $id;
-        $dados['des_usuario'] = $_POST['des_usuario'];
+        $dados['nome_usuario'] = $_POST['nome_usuario'];
+        $dados['email_usuario'] = $_POST['email_usuario'];
+        $dados['senha_usuario'] = $_POST['senha_usuario'];
         $modelUsuario->updUsuario($dados);
 
         header('Location: /usuario');

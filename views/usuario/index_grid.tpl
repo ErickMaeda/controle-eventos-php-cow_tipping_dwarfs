@@ -10,7 +10,7 @@
         {foreach from=$listusuario item="linha"}
             <tr>                                                                
                 <td>{$linha.id_usuario}</td>
-                <td>{$linha.usuario}</td>
+                <td>{$linha.nome_usuario}</td>
                 <td>
                     <a href="/usuario/edit/id_usuario/{$linha.id_usuario}">Editar</a> | 
                     <a href="/usuario/delete/id_usuario/{$linha.id_usuario}" class="del">Deletar</a>
