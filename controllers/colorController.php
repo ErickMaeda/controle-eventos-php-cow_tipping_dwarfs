@@ -1,9 +1,16 @@
 <?php
 
+include_once 'sessionController.php';
+
 class color extends controller {
 
     public function index_action() {
 
+        if (isset($_SESSION['usuario']['email'])) {
+            $this->smarty->display('index/index.tpl');
+        } else {
+            $this->smarty->display('login/index.tpl');
+        }
         //list all records
         $model_colors = new colorModel();
         $colors_res = $model_colors->getColor('active<>0'); //Full table Scan :( or :)         
@@ -31,8 +38,8 @@ class color extends controller {
 
     public function update() {
         $id = $this->getParam('id');
-        
-         
+
+
 
         $modelcolor = new colorModel();
         $dados['id'] = $id;
@@ -55,7 +62,7 @@ class color extends controller {
     }
 
     public function edit() {
-       
+
         //die();
         $id = $this->getParam('id');
         $modelcolor = new colorModel();

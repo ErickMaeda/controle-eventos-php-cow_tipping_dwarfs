@@ -1,9 +1,13 @@
 <?php
 
+include_once 'sessionController.php';
+
 class evento extends controller {
 
     public function index_action() {
 
+        $session = new session();
+        $session->sessao_valida();
         //list all records
         $model = new model();
         $res = $model->readSQL('SELECT e.*,c.des_cidade FROM evento e LEFT JOIN cidade c ON (c.id_cidade=e.id_cidade) WHERE e.stat<>0'); //Full table Scan :( or :)         
@@ -42,7 +46,7 @@ class evento extends controller {
         $evento['id_cidade'] = $_POST['id_cidade'];
         $evento['des_evento'] = $_POST['des_evento'];
         $evento['status_evento'] = $_POST['status_evento'];
-        
+
         $eventoModel->upEvento($evento);
 
         header('Location: /evento');
@@ -69,7 +73,7 @@ class evento extends controller {
         $model = new model();
         $modelCidade = new cidadeModel();
         $resCidade = $modelCidade->getCidade('stat<>0');
-        $res = $model->readSQL('SELECT e.*,c.des_cidade FROM evento e LEFT JOIN cidade c ON (c.id_cidade=e.id_cidade) WHERE e.stat<>0 AND e.id_evento='.$id);
+        $res = $model->readSQL('SELECT e.*,c.des_cidade FROM evento e LEFT JOIN cidade c ON (c.id_cidade=e.id_cidade) WHERE e.stat<>0 AND e.id_evento=' . $id);
         $this->smarty->assign('evento', $res[0]);
         $this->smarty->assign('title', 'Atualizar evento');
         $this->smarty->assign('cidade', $resCidade);

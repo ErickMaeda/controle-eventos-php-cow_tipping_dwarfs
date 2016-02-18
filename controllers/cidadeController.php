@@ -1,9 +1,13 @@
 <?php
 
+include_once 'sessionController.php';
+
 class cidade extends controller {
 
     public function index_action() {
 
+        $session = new session();
+        $session->sessao_valida();
         //list all records
         $cidade_model = new cidadeModel();
         $cidade_res = $cidade_model->getCidadeEstado("SELECT id_cidade,des_cidade,e.id_estado,des_estado FROM cidade c inner join estado e on (c.id_estado=e.id_estado AND e.stat<>0)");
@@ -33,7 +37,7 @@ class cidade extends controller {
 
     public function update() {
         $id = $this->getParam('id_cidade');
-        
+
         $modelCidade = new cidadeModel();
         $dados['id_cidade'] = $id;
         $dados['des_cidade'] = $_POST['des_cidade'];
@@ -53,7 +57,7 @@ class cidade extends controller {
         $estado_res = $estado_model->getEstado('stat<>0');
         $this->smarty->assign('registro', $resCidade[0]);
         $this->smarty->assign('estado', $estado_res);
-        $this->smarty->assign('id_choosen',$resCidade[0]['id_estado']);
+        $this->smarty->assign('id_choosen', $resCidade[0]['id_estado']);
         $this->smarty->assign('title', 'Atualizar Cidade');
         //call the smarty
         $this->smarty->display('cidade/update.tpl');
@@ -65,7 +69,7 @@ class cidade extends controller {
         $modelCidade = new cidadeModel();
         $dados['id_cidade'] = $id;
         $modelCidade->delCidade($dados);
-        
+
 
         header('Location: /cidade');
     }

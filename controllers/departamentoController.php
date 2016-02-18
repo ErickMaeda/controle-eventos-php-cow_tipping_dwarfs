@@ -1,9 +1,13 @@
 <?php
 
+include_once 'sessionController.php';
+
 class departamento extends controller {
 
     public function index_action() {
 
+        $session = new session();
+        $session->sessao_valida();
         //list all records
         $departamento_model = new departamentoModel();
         $departamento_res = $departamento_model->getDepartamento('stat<>0'); //Full table Scan :( or :)         
@@ -52,13 +56,13 @@ class departamento extends controller {
     }
 
     public function delete() {
-        
+
         $id = $this->getParam('id_departamento');
         $modelDepartamento = new departamentoModel();
         $dados['id_departamento'] = $id;
         $modelDepartamento->delDepartamento($dados);
 
-        
+
         header('Location: /departamento');
     }
 
