@@ -7,19 +7,22 @@ class clienteModel extends model {
 
     var $tabPadrao = 'cliente';
     var $campo_chave = 'id_cliente';
-    var $tabAux = 'cliente_endereco';
-    var $campo_chave_aux = 'id_cliente_endereco';
 
     // An empty structure to create news Entitys 
     public function estrutura_vazia() {
         $dados = null;
         $dados[0]['id_cliente'] = NULL;
         $dados[0]['nome_cliente'] = NULL;
-        $dados[0]['id_endereco'] = NULL;
+        $dados[0]['endereco_cliente'] = NULL;
         $dados[0]['codigo_uc'] = NULL;
         $dados[0]['codigo_nis'] = NULL;
         $dados[0]['cpf_cliente'] = NULL;
         $dados[0]['rg_cliente'] = NULL;
+        $dados[0]['stat'] = NULL;
+        $dados[0]['id_estado'] = NULL;
+        $dados[0]['id_cidade'] = NULL;
+        $dados[0]['telefone_cliente'] = NULL;
+
         return $dados;
     }
 
@@ -43,20 +46,6 @@ class clienteModel extends model {
         return $id;
     }
 
-    /** Save a new Entity  */
-    public function setClienteEndereco($array) {
-
-        $this->startTransaction();
-
-        $id = $this->transaction(
-                $this->insert($this->tabAux, $array, false)
-        );
-
-        $this->commit();
-
-        return $id;
-    }
-
     /** Update the Entity */
     public function upCliente($array) {
         //Chave    
@@ -71,7 +60,7 @@ class clienteModel extends model {
     public function delCliente($array) {
         //Key 
         $where = $this->campo_chave . " = " . $array[$this->campo_chave];
-        $array2['active'] = 0; // Muda status para zero excluido!   
+        $array2['stat'] = 0; // Muda status para zero excluido!   
         $this->startTransaction();
         $this->transaction($this->update($this->tabPadrao, $array2, $where));
         $this->commit();

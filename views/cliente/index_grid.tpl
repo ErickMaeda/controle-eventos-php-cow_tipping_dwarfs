@@ -14,8 +14,8 @@
                 <td>{$linha.dt_cadastro}</td>
 
                 <td>                   
-                    <a href="/cliente/detalhes/id_cliente/{$linha.id_cliente}">Detalhes</a> 
-                    <a href="/cliente/update/id_cliente/{$linha.id_cliente}">Editar</a> | 
+                    <a href="/cliente/detalhes/id_cliente/{$linha.id_cliente}">Detalhes</a> |
+                    <a href="/cliente/edit/id_cliente/{$linha.id_cliente}">Editar</a> | 
                     <a href="/cliente/delete/id_cliente/{$linha.id_cliente}" class="del">Deletar</a>
                 </td>
             </tr>
