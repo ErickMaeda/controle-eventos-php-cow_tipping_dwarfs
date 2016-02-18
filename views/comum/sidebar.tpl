@@ -45,9 +45,10 @@
                 </li>
             </ul>
         </li>
-        <li>
-                    <a href="/logout.php">Sair</a>
-        </li>
-
+        {if isset($_SESSION['usuario'])}
+            <li>
+                <a href="/login">Sair</a>
+            </li>
+        {/if}
     </ul>
 </div>

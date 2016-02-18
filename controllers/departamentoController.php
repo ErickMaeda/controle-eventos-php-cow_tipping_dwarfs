@@ -8,6 +8,7 @@ class departamento extends controller {
 
         $session = new session();
         $session->sessao_valida();
+
         //list all records
         $departamento_model = new departamentoModel();
         $departamento_res = $departamento_model->getDepartamento('stat<>0'); //Full table Scan :( or :)         
