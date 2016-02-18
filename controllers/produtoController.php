@@ -10,11 +10,9 @@ class produto extends controller {
         $session->sessao_valida();
         //list all records
         $produto_model = new produtoModel();
-        $produto_res = $produto_model->getProdutoDepartamento("SELECT id_produto,des_produto,e.id_departamento,des_departamento FROM produto c inner join departamento e on (c.id_departamento=e.id_departamento AND e.stat<>0)");
-        //send the records to template sytem
+        $produto_res = $produto_model->getProdutoDepartamento("SELECT c.qtd_produto,c.id_produto,c.des_produto,e.id_departamento,des_departamento FROM produto c inner join departamento e on (c.id_departamento=e.id_departamento AND e.stat<>0)");
         $this->smarty->assign('listproduto', $produto_res);
         $this->smarty->assign('title', 'Produtos');
-        //call the smarty
         $this->smarty->display('produto/index.tpl');
     }
 
@@ -30,6 +28,7 @@ class produto extends controller {
         $modelProduto = new produtoModel();
         $dados['des_produto'] = $_POST['des_produto'];
         $dados['id_departamento'] = $_POST['id_departamento'];
+        $dados['qtd_produto'] = $_POST['qtd_produto'];
         $modelProduto->setProduto($dados);
 
         header('Location: /produto');
@@ -41,6 +40,7 @@ class produto extends controller {
         $modelProduto = new produtoModel();
         $dados['id_produto'] = $id;
         $dados['des_produto'] = $_POST['des_produto'];
+        $dados['qtd_produto'] = $_POST['qtd_produto'];
         $dados['id_departamento'] = $_POST['id_departamento'];
         $modelProduto->updProduto($dados);
 
@@ -49,7 +49,6 @@ class produto extends controller {
 
     public function edit() {
 
-        //die();
         $id = $this->getParam('id_produto');
         $modelProduto = new produtoModel();
         $resProduto = $modelProduto->getProduto('id_produto=' . $id);
@@ -64,16 +63,13 @@ class produto extends controller {
     }
 
     public function delete() {
-
         $id = $this->getParam('id_produto');
         $modelProduto = new produtoModel();
         $dados['id_produto'] = $id;
         $modelProduto->delProduto($dados);
 
-
         header('Location: /produto');
     }
-
 }
 
 ?>

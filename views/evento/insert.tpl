@@ -39,18 +39,18 @@
                                                         <option value="1">Aberto</option>
                                                         <option value="2">Fechado</option>
                                                     </select>
-                                                    
+
                                                 </div>
-                                                                 
+
                                             </div>
-                                                    
+
                                         </div>
-                                                    
+
                                     </div>
-                                                    
+
                                 </div>
-                                                    <button type="submit" class="btn btn-default" style="width: 85px">Salvar</button>
-                                                <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
+                                <button type="submit" class="btn btn-default" style="width: 85px">Salvar</button>
+                                <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
                             </form>
                         </div>
                     </div>

@@ -31,8 +31,32 @@
                                     <tr><td>Data de Cadastro</td>  <td>{$registro.dt_cadastro}</td>                               
                                 </tbody>
                             </table>  
-                            <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Voltar</button>
 
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <h1>{$title_produto}</h1>
+                            <table class="table table-striped">                        
+                                <tbody>
+                                    {foreach from=$produto item=$linha}
+                                        <tr><td>Produto</td>  <td>{$linha.des_produto}</td></tr>
+                                        <tr><td>Quantidade</td>  <td>{$linha.qtd_produto}</td></tr> 
+
+                                    {foreachelse}
+                                        <tr><td colspan="100%">Tabela Vazia</td></tr>
+                                    {/foreach}
+                                </tbody>
+                            </table>  
+
+                            <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Voltar</button>
 
                         </div>
 
