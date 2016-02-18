@@ -20,7 +20,7 @@ class evento extends controller {
         $cidadeModel = new cidadeModel();
         $res_evento = $eventoModel->getEvento('stat<>0');
         $res_cidade = $cidadeModel->getCidade('stat<>0');
-        $this->smarty->assign('title', 'evento');
+        $this->smarty->assign('title', 'Novo Evento');
         $this->smarty->assign('cidade', $res_cidade);
         $this->smarty->display('evento/insert.tpl');
     }
@@ -57,7 +57,7 @@ class evento extends controller {
 
         $this->smarty->assign('registro', $res[0]);
         $this->smarty->assign('cidade', $resCidade[0]);
-        $this->smarty->assign('title', 'Detalhe do evento');
+        $this->smarty->assign('title', 'Detalhes do evento');
         //call the smarty
         $this->smarty->display('evento/detail.tpl');
     }
