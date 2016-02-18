@@ -47,7 +47,7 @@ class clienteModel extends model {
     }
 
     /** Update the Entity */
-    public function upCliente($array) {
+    public function updCliente($array) {
         //Chave    
         $where = $this->campo_chave . " = " . $array[$this->campo_chave];
         $this->startTransaction();
@@ -60,7 +60,7 @@ class clienteModel extends model {
     public function delCliente($array) {
         //Key 
         $where = $this->campo_chave . " = " . $array[$this->campo_chave];
-        $array2['stat'] = 0; // Muda status para zero excluido!   
+        
         $this->startTransaction();
         $this->transaction($this->update($this->tabPadrao, $array2, $where));
         $this->commit();

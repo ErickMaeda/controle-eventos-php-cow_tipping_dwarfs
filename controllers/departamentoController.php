@@ -61,7 +61,8 @@ class departamento extends controller {
         $id = $this->getParam('id_departamento');
         $modelDepartamento = new departamentoModel();
         $dados['id_departamento'] = $id;
-        $modelDepartamento->delDepartamento($dados);
+        $dados['stat'] = 0;
+        $modelDepartamento->updDepartamento($dados);
 
 
         header('Location: /departamento');

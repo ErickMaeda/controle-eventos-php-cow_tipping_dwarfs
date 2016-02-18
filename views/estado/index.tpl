@@ -22,7 +22,7 @@
                         <div class="col-lg-12">
                             <h1>{$title}</h1>                        
                             <a href="/estado/insert" class="btn btn-default" id="btn_novo">Novo Estado</a>
-                            <br>
+                            <br><br>
                             {include file="estado/index_grid.tpl"}
                         </div>
                     </div>

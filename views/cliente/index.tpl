@@ -23,7 +23,7 @@
                             <h1>Cliente</h1>
                             
                             <a href="/cliente/insert" class="btn btn-default" id="btn_novo">Novo Cliente</a>
-                            <br>
+                            <br><br>
                             {include file="cliente/index_grid.tpl"}
                         </div>
                     </div>

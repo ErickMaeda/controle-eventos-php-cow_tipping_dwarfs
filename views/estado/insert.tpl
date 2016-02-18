@@ -22,15 +22,27 @@
 
                         <div class="col-lg-12">
                             <h1>{$title}</h1>
-                            <form role="form" action="/estado/save" method="POST" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <br>
-                                    <label for="name">Descrição</label>
-                                    <input type="input" class="form-control" id="des_estado" name="des_estado" required style="width: 250px">
-                                </div>                                                                
-                                <button type="submit" class="btn btn-default" style="width: 85px">Salvar</button>
-                                <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
-                            </form>
+
+                            <div class="panel panel-default">
+                                <div class="panel panel-body">
+                                    <div class="col-xs-12">
+                                        <div class="row">
+
+                                            <form role="form" action="/estado/save" method="POST" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                    <br>
+                                                    <label for="name">Descrição</label>
+                                                    <input type="input" class="form-control" id="des_estado" name="des_estado" required style="width: 250px">
+                                                </div>                                                                
+                                                <button type="submit" class="btn btn-default" style="width: 85px">Salvar</button>
+                                                <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
 

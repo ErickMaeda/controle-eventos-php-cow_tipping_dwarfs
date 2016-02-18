@@ -62,7 +62,7 @@ class cliente extends controller {
         $cliente['telefone_cliente'] = $_POST['telefone_cliente'];
 
 
-        $model_cliente->upCliente($cliente);
+        $model_cliente->updCliente($cliente);
 
         header('Location: /cliente');
     }
@@ -106,7 +106,8 @@ class cliente extends controller {
         $id = $this->getParam('id_cliente');
         $model_cliente = new clienteModel();
         $dados['id_cliente'] = $id;
-        $model_cliente->delCliente($dados);
+        $dados['stat'] = 0;
+        $model_cliente->updCliente($dados);
 
         header('Location: /cliente');
     }

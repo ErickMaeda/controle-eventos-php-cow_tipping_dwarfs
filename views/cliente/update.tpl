@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         {include file="comum/head.tpl"}
     </head>
-
     <body>
         <div id="wrapper">
             <!-- Sidebar -->
@@ -81,13 +79,10 @@
                                             <br>
                                             <button type="submit" class="btn btn-default" style="width: 85px">Atualizar</button>
                                             <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
-
                                         </div>
                                     </div>
                             </form>
                         </div>
-
-
                     </div>
                 </div>
             </div>

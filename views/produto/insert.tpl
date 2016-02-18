@@ -23,25 +23,36 @@
                         <div class="col-lg-12">
                             <h1>{$title}</h1>
 
-                            <form role="form" action="/produto/save" method="POST" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <br>
-                                    <label for="name">Nome do Produto</label>
+                            <div class="panel panel-default">
+                                <div class="panel panel-body">
+                                    <div class="col-xs-12">
+                                        <div class="row">
 
-                                    <input type="input" class="form-control" id="des_produto" name="des_produto" required style="width: 250px">
-                                    <br>
-                                    
-                                    <label for="name">Departamento</label><br>
-                                    <select type="input" name=id_departamento id=id_departamento class="btn btn-default dropdown-toggle" style="width: 250px">
-                                        {foreach from=$departamento item=$linha}
-                                            <option value="{$linha.id_departamento}">{$linha.des_departamento}</option>
-                                        {/foreach}
-                                    </select>
+                                            <form role="form" action="/produto/save" method="POST" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                    <br>
+                                                    <label for="name">Nome do Produto</label>
 
-                                </div>                                                                
-                                <button type="submit" class="btn btn-default" style="width: 85px">Salvar</button>
-                                <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
-                            </form>
+                                                    <input type="input" class="form-control" id="des_produto" name="des_produto" required style="width: 250px">
+                                                    <br>
+
+                                                    <label for="name">Departamento</label><br>
+                                                    <select type="input" name=id_departamento id=id_departamento class="btn btn-default dropdown-toggle" style="width: 250px">
+                                                        {foreach from=$departamento item=$linha}
+                                                            <option value="{$linha.id_departamento}">{$linha.des_departamento}</option>
+                                                        {/foreach}
+                                                    </select>
+
+                                                </div>                                                                
+                                                <button type="submit" class="btn btn-default" style="width: 85px">Salvar</button>
+                                                <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
 

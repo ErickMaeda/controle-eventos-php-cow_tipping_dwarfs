@@ -1,7 +1,7 @@
 <div class="panel panel-default">
     <div class="panel panel-body">
         <div class="col-xs-12">
-            <div class="row">
+            <div class="row">              
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -20,7 +20,6 @@
                                 <td>{$linha.des_evento}</td>
                                 <td>{$linha.status_evento}</td>
                                 <td>{$linha.dt_cadastro}</td>
-
                                 <td>                   
                                     <a href="/evento/detalhes/id_evento/{$linha.id_evento}">Detalhes</a> |
                                     <a href="/evento/edit/id_evento/{$linha.id_evento}">Editar</a> | 
@@ -31,7 +30,7 @@
                             <tr><td colspan="100%">Tabela Vazia</td></tr>
                         {/foreach}          
                     </tbody>
-                </table>
+                </table>                   
             </div>
         </div>
     </div>

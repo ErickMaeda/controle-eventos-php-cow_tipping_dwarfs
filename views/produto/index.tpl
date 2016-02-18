@@ -12,7 +12,7 @@
         <div id="wrapper">
 
             <!-- Sidebar -->
-      {include file="comum/sidebar.tpl"}
+            {include file="comum/sidebar.tpl"}
             <!-- /#sidebar-wrapper -->
 
             <!-- Page Content -->
@@ -22,19 +22,19 @@
                         <div class="col-lg-12">
                             <h1>{$title}</h1>                          
                             <a href="/produto/insert" class="btn btn-default" id="btn_novo">Novo Produto</a>
-                            <br>
+                            <br><br>
                             {include file="produto/index_grid.tpl"}
                         </div>
                     </div>
                 </div>
             </div>
             <!-- /#page-content-wrapper -->
-            
+
         </div>
         <!-- /#wrapper -->
 
-    {include file="comum/footer.tpl"}    
-    <script src="/files/js/util.js"></script>
+        {include file="comum/footer.tpl"}    
+        <script src="/files/js/util.js"></script>
 
     </body>
 

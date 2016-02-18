@@ -10,7 +10,7 @@ class cidade extends controller {
         $session->sessao_valida();
         //list all records
         $cidade_model = new cidadeModel();
-        $cidade_res = $cidade_model->getCidadeEstado("SELECT id_cidade,des_cidade,e.id_estado,des_estado FROM cidade c inner join estado e on (c.id_estado=e.id_estado AND e.stat<>0)");
+        $cidade_res = $cidade_model->getCidadeEstado("SELECT id_cidade,des_cidade,e.id_estado,des_estado FROM cidade c inner join estado e on (c.id_estado=e.id_estado AND c.stat<>0)");
         //send the records to template sytem
         $this->smarty->assign('listcidade', $cidade_res);
         $this->smarty->assign('title', 'Cidades');
@@ -68,7 +68,8 @@ class cidade extends controller {
         $id = $this->getParam('id_cidade');
         $modelCidade = new cidadeModel();
         $dados['id_cidade'] = $id;
-        $modelCidade->delCidade($dados);
+        $dados['stat'] = 0;
+        $modelCidade->updCidade($dados);
 
 
         header('Location: /cidade');

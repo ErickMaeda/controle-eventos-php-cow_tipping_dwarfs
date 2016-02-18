@@ -47,7 +47,7 @@ class evento extends controller {
         $evento['des_evento'] = $_POST['des_evento'];
         $evento['status_evento'] = $_POST['status_evento'];
 
-        $eventoModel->upEvento($evento);
+        $eventoModel->updEvento($evento);
 
         header('Location: /evento');
     }
@@ -86,7 +86,8 @@ class evento extends controller {
         $id = $this->getParam('id_evento');
         $eventoModel = new eventoModel();
         $dados['id_evento'] = $id;
-        $eventoModel->delEvento($dados);
+        $dados['stat'] = 0;
+        $eventoModel->updEvento($dados);
 
         header('Location: /evento');
     }
