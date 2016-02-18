@@ -2,7 +2,7 @@
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
             <a href="/">
-                Cadastrator PRO-3000
+                Chayotator PRO-3000
             </a>
         </li>
         <li>
