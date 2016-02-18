@@ -12,6 +12,10 @@
         <li>
             <a href="/color">Participações</a>
         </li>
+        
+        <li>
+            <a href="/cracha">Emissão de Crachá</a>
+        </li>
 
         <li>
             <a data-toggle="collapse" data-target="#cadastro"><i class="fa fa-fw fa-edit"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i></a>
