@@ -1,10 +1,14 @@
 <?php
 
+include_once 'sessionController.php';
+
 class usuario extends controller {
 
     public function index_action() {
 
-        //list all records
+        $session = new session();
+        $session->sessao_valida();
+//list all records
         $usuario_model = new usuarioModel();
         $usuario_res = $usuario_model->getUsuario('stat<>0'); //Full table Scan :( or :)         
         //send the records to template sytem
@@ -56,13 +60,13 @@ class usuario extends controller {
     }
 
     public function delete() {
-        
+
         $id = $this->getParam('id_usuario');
         $modelUsuario = new usuarioModel();
         $dados['id_usuario'] = $id;
         $modelUsuario->delUsuario($dados);
 
-        
+
         header('Location: /usuario');
     }
 

@@ -1,9 +1,12 @@
 <?php
 
+include_once 'sessionController.php';
+
 class cliente extends controller {
 
     public function index_action() {
-
+        $session = new session();
+        $session->sessao_valida();
         //list all records
         $model_cliente = new clienteModel();
         $clientes = $model_cliente->getCliente('stat<>0'); //Full table Scan :( or :)         
@@ -45,7 +48,7 @@ class cliente extends controller {
 
     public function update() {
         $id = $this->getParam('id_cliente');
-echo 'id_cliente = '.$id;
+        echo 'id_cliente = ' . $id;
         $model_cliente = new clienteModel();
         $cliente['id_cliente'] = $id;
         $cliente['nome_cliente'] = $_POST['nome_cliente'];
@@ -58,7 +61,7 @@ echo 'id_cliente = '.$id;
         $cliente['id_cidade'] = $_POST['id_cidade'];
         $cliente['telefone_cliente'] = $_POST['telefone_cliente'];
 
-        
+
         $model_cliente->upCliente($cliente);
 
         header('Location: /cliente');

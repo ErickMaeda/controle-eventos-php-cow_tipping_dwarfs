@@ -1,9 +1,13 @@
 <?php
 
+include_once 'sessionController.php';
+
 class estado extends controller {
 
     public function index_action() {
 
+        $session = new session();
+        $session->sessao_valida();
         //list all records
         $estado_model = new estadoModel();
         $estado_res = $estado_model->getEstado('stat<>0'); //Full table Scan :( or :)         

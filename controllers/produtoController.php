@@ -1,9 +1,13 @@
 <?php
 
+include_once 'sessionController.php';
+
 class produto extends controller {
 
     public function index_action() {
 
+        $session = new session();
+        $session->sessao_valida();
         //list all records
         $produto_model = new produtoModel();
         $produto_res = $produto_model->getProdutoDepartamento("SELECT id_produto,des_produto,e.id_departamento,des_departamento FROM produto c inner join departamento e on (c.id_departamento=e.id_departamento AND e.stat<>0)");
@@ -33,7 +37,7 @@ class produto extends controller {
 
     public function update() {
         $id = $this->getParam('id_produto');
-        
+
         $modelProduto = new produtoModel();
         $dados['id_produto'] = $id;
         $dados['des_produto'] = $_POST['des_produto'];
@@ -53,7 +57,7 @@ class produto extends controller {
         $departamento_res = $departamento_model->getDepartamento('stat<>0');
         $this->smarty->assign('registro', $resProduto[0]);
         $this->smarty->assign('departamento', $departamento_res);
-        $this->smarty->assign('id_choosen',$resProduto[0]['id_departamento']);
+        $this->smarty->assign('id_choosen', $resProduto[0]['id_departamento']);
         $this->smarty->assign('title', 'Atualizar Produto');
         //call the smarty
         $this->smarty->display('produto/update.tpl');
@@ -65,7 +69,7 @@ class produto extends controller {
         $modelProduto = new produtoModel();
         $dados['id_produto'] = $id;
         $modelProduto->delProduto($dados);
-        
+
 
         header('Location: /produto');
     }
