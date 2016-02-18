@@ -5,8 +5,8 @@ class evento extends controller {
     public function index_action() {
 
         //list all records
-        $model_evento = new eventoModel();
-        $res = $model_evento->getEvento('stat<>0'); //Full table Scan :( or :)         
+        $model = new model();
+        $res = $model->readSQL('SELECT e.*,c.des_cidade FROM evento e LEFT JOIN cidade c ON (c.id_cidade=e.id_cidade) WHERE e.stat<>0'); //Full table Scan :( or :)         
         //send the records to template sytem
         $this->smarty->assign('listevento', $res);
         $this->smarty->assign('title', 'Eventos');
@@ -17,8 +17,11 @@ class evento extends controller {
     public function insert() {
 
         $eventoModel = new eventoModel();
-        $res_evento->getEvento('stat<>0');
+        $cidadeModel = new cidadeModel();
+        $res_evento = $eventoModel->getEvento('stat<>0');
+        $res_cidade = $cidadeModel->getCidade('stat<>0');
         $this->smarty->assign('title', 'evento');
+        $this->smarty->assign('cidade', $res_cidade);
         $this->smarty->display('evento/insert.tpl');
     }
 
@@ -39,7 +42,7 @@ class evento extends controller {
         $evento['id_cidade'] = $_POST['id_cidade'];
         $evento['des_evento'] = $_POST['des_evento'];
         $evento['status_evento'] = $_POST['status_evento'];
-
+        
         $eventoModel->upEvento($evento);
 
         header('Location: /evento');
@@ -48,8 +51,9 @@ class evento extends controller {
     public function detalhes() {
         $id = $this->getParam('id_evento');
         $eventoModel = new eventoModel();
+        $cidadeModel = new cidadeModel();
         $res = $eventoModel->getEvento('id_evento=' . $id . ' AND stat<>0');
-        $resCidade = $model_cidade->getCidade('id_cidade=' . $res[0]['id_cidade']);
+        $resCidade = $cidadeModel->getCidade('id_cidade=' . $res[0]['id_cidade']);
 
         $this->smarty->assign('registro', $res[0]);
         $this->smarty->assign('cidade', $resCidade[0]);
@@ -60,13 +64,15 @@ class evento extends controller {
 
     public function edit() {
 
-        $eventoModel = new eventoModel();
+        $cidadeModel = new cidadeModel();
         $id = $this->getParam('id_evento');
-        $res = $eventoModel->getEvento('id_evento=' . $id . ' AND stat<>0');
-        $resCidade = $model_cidade->getCidade();
+        $model = new model();
+        $modelCidade = new cidadeModel();
+        $resCidade = $modelCidade->getCidade('stat<>0');
+        $res = $model->readSQL('SELECT e.*,c.des_cidade FROM evento e LEFT JOIN cidade c ON (c.id_cidade=e.id_cidade) WHERE e.stat<>0 AND e.id_evento='.$id);
         $this->smarty->assign('evento', $res[0]);
-        $this->smarty->assign('cidade', $resCidade);
         $this->smarty->assign('title', 'Atualizar evento');
+        $this->smarty->assign('cidade', $resCidade);
         //call the smarty
         $this->smarty->display('evento/update.tpl');
     }

@@ -6,7 +6,7 @@ class cliente extends controller {
 
         //list all records
         $model_cliente = new clienteModel();
-        $clientes = $model_cliente->getCliente('stat<>0',"10"); //Full table Scan :( or :)         
+        $clientes = $model_cliente->getCliente('stat<>0'); //Full table Scan :( or :)         
         //send the records to template sytem
         $this->smarty->assign('listcliente', $clientes);
         $this->smarty->assign('title', 'Clientes');

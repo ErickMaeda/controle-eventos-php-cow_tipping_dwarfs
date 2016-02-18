@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1>{$title}</h1>
-                            <form role="form" action="/cliente/save" method="POST" enctype="multipart/form-data">
+                            <form role="form" action="/evento/save" method="POST" enctype="multipart/form-data">
                                 <div class="panel panel-default">
                                     <div class="panel panel-body">
                                         <div class="col-xs-12">
@@ -41,7 +41,7 @@
                                                     </select> 
                                                 </div>
                                                 <br>
-                                                <button type="submit" class="btn btn-default">Save</button>
+                                                <button type="submit" class="btn btn-default">SALVAR</button>
                                             </div>
                                         </div>
                                     </div>

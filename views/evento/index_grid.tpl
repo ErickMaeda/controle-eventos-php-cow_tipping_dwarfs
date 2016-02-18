@@ -12,7 +12,7 @@
         {foreach from=$listevento item="linha"}
             <tr>                                                                
                 <td>{$linha.id_evento}</td>
-                <td>{$cidade.des_cidade}</td>
+                <td>{$linha.des_cidade}</td>
                 <td>{$linha.des_evento}</td>
                 <td>{$linha.status_evento}</td>
                 <td>{$linha.dt_cadastro}</td>
