@@ -39,7 +39,7 @@
                                 <select type="input" name=id_departamento id=id_departamento class="btn btn-default dropdown-toggle" style="width: 250px">
                                     {foreach from=$departamento item=$linha}
                                         {if $linha.id_departamento == $id_choosen}
-                                            <option value="{$linha.id_departamento}" selected="selected">{$linha.des_departamento}</option>
+                                            <option value="{$linha.id_departamento}" selected="selected">{$linha.des_departamento} </option>
                                         {else}
                                             <option value="{$linha.id_departamento}" >{$linha.des_departamento}</option>
                                         {/if}
@@ -49,8 +49,8 @@
                                 <br>
                                 <br>
 
-                                <button type="submit" class="btn btn-default">Atualizar</button>
-                                <button type="reset" class="btn btn-default" onclick="window.history.back();">Cancelar</button>
+                                <button type="submit" class="btn btn-default" style="width: 85px">Atualizar</button>
+                                <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
                             </form>
                         </div>
                     </div>

@@ -28,7 +28,8 @@
                                     <label for="name">Descrição</label>
                                     <input type="input" class="form-control" id="des_estado" name="des_estado" required style="width: 250px">
                                 </div>                                                                
-                                <button type="submit" class="btn btn-default">Salvar</button>
+                                <button type="submit" class="btn btn-default" style="width: 85px">Salvar</button>
+                                <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
                             </form>
                         </div>
 

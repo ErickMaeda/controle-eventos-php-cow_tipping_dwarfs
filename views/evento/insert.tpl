@@ -36,16 +36,21 @@
                                                 <div class="col-md-3">
                                                     <label for="name">Status do evento</label>
                                                     <select type="input" name="status_evento" id="status_evento" class="btn btn-default dropdown-toggle form-control" >
-                                                        <option value="1">ABERTO</option>
-                                                        <option value="2">FECHADO</option>
-                                                    </select> 
+                                                        <option value="1">Aberto</option>
+                                                        <option value="2">Fechado</option>
+                                                    </select>
+                                                    
                                                 </div>
-                                                <br>
-                                                <button type="submit" class="btn btn-default">SALVAR</button>
+                                                                 
                                             </div>
+                                                    
                                         </div>
+                                                    
                                     </div>
+                                                    
                                 </div>
+                                                    <button type="submit" class="btn btn-default" style="width: 85px">Salvar</button>
+                                                <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
                             </form>
                         </div>
                     </div>

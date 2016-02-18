@@ -21,8 +21,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1>Cliente</h1>
-                            <p>This example access the database. use the script chayotedb.sql and configure the config.php to use.
-                                </p>                            
+                            
                             <a href="/cliente/insert" class="btn btn-default" id="btn_novo">Novo Cliente</a>
                             <br>
                             {include file="cliente/index_grid.tpl"}

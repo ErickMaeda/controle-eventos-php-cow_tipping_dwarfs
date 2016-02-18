@@ -49,8 +49,8 @@
                                 <br>
                                 <br>
 
-                                <button type="submit" class="btn btn-default">Atualizar</button>
-                                <button type="reset" class="btn btn-default" onclick="window.history.back();">Cancelar</button>
+                                <button type="submit" class="btn btn-default" style="width: 85px">Atualizar</button>
+                                <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
                             </form>
                         </div>
                     </div>

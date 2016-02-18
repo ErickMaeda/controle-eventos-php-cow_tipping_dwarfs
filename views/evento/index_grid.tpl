@@ -2,10 +2,10 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>CIDADE</th>
-            <th>DESCRICAO</th>
-            <th>STATUS DO EVENTO</th>
-            <th>DATA DE CADASTRO</th>
+            <th>Cidade</th>
+            <th>Descrição</th>
+            <th>Status do Evento</th>
+            <th>Data de Cadastro</th>
         </tr>
     </thead>
     <tbody>
@@ -24,7 +24,7 @@
                 </td>
             </tr>
         {foreachelse}
-            <tr><td colspan="100%">Empty Table</td></tr>
+            <tr><td colspan="100%">Tabela Vazia</td></tr>
         {/foreach}          
     </tbody>
 </table>

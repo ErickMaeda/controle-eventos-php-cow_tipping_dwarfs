@@ -27,27 +27,27 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label for="name">CPF</label>
-                                                    <input type="input" class="form-control obg" id="cpf_cliente" value="{$cliente.cpf_cliente}" name="cpf_cliente" required>    
+                                                    <input type="number" class="form-control obg" id="cpf_cliente" value="{$cliente.cpf_cliente}" name="cpf_cliente" minlength="8" required>    
                                                 </div>
                                             </div>  
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <label for="name">RG</label>
-                                                    <input type="input" class="form-control obg" id="rg_cliente" value="{$cliente.rg_cliente}" name="rg_cliente" required>  
+                                                    <input type="number" class="form-control obg" id="rg_cliente" value="{$cliente.rg_cliente}" name="rg_cliente" minlength="6" required>  
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="name">UC</label>
-                                                    <input type="input" class="form-control obg" id="codigo_uc" value="{$cliente.codigo_uc}" name="codigo_uc" required>
+                                                    <input type="number" class="form-control obg" id="codigo_uc" value="{$cliente.codigo_uc}" name="codigo_uc" required>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label for="name">NIS</label>
-                                                    <input type="input" class="form-control obg" id="codigo_nis" value="{$cliente.codigo_nis}" name="codigo_nis" required>
+                                                    <input type="number" class="form-control obg" id="codigo_nis" value="{$cliente.codigo_nis}" name="codigo_nis" required>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <label for="name">Telefone</label>
-                                                    <input type="input" class="form-control" id="telefone_cliente" value="{$cliente.telefone_cliente}" name="telefone_cliente" required>
+                                                    <input type="number" class="form-control" id="telefone_cliente" value="{$cliente.telefone_cliente}" name="telefone_cliente" minlength="8" required>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="name">Endereco</label>
@@ -79,7 +79,9 @@
                                                 </div>
                                             </div>
                                             <br>
-                                            <button type="submit" class="btn btn-default">Atualizar</button>
+                                            <button type="submit" class="btn btn-default" style="width: 85px">Atualizar</button>
+                                            <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
+
                                         </div>
                                     </div>
                             </form>

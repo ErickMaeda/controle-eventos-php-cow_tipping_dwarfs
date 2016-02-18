@@ -2,7 +2,7 @@
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
             <a href="/">
-                Chayote PHP
+                Cadastrator PRO-3000
             </a>
         </li>
         <li>

@@ -37,9 +37,7 @@
 
                                 </tbody>
                             </table>  
-                            <input class="btn btn-default" type="reset" value="VOLTAR" name="btnnao" onclick="window.history.back();"/>
-
-
+                            <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Voltar</button>
 
                         </div>
 

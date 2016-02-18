@@ -3,7 +3,7 @@
         <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Dt de Cadastro</th>
+            <th>Cadastrado em</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +20,7 @@
                 </td>
             </tr>
         {foreachelse}
-            <tr><td colspan="100%">Empty Table</td></tr>
+            <tr><td colspan="100%">Tabela Vazia</td></tr>
         {/foreach}          
     </tbody>
 </table>

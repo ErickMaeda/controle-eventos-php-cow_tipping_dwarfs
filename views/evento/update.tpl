@@ -41,20 +41,22 @@
                                                     <label for="name">Status do evento</label>
                                                     <select type="input" name="status_evento" id="status_evento" class="btn btn-default dropdown-toggle form-control" >
                                                         {if $evento.status_evento == 1}
-                                                            <option value="1" selected="selected">ABERTO</option>
-                                                            <option value="2" >FECHADO</option>
+                                                            <option value="1" selected="selected">Aberto</option>
+                                                            <option value="2" >Fechado</option>
                                                         {else}
-                                                            <option value="1" >ABERTO</option>
-                                                            <option value="2" selected="selected">FECHADO</option>
+                                                            <option value="1" >Aberto</option>
+                                                            <option value="2" selected="selected">Fechado</option>
                                                         {/if}
                                                     </select> 
                                                 </div>
                                                 <br>
-                                                <button type="submit" class="btn btn-default">ATUALIZAR</button>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <button type="submit" class="btn btn-default" style="width: 85px">Atualizar</button>
+                                <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
                             </form>
                         </div>
                     </div>

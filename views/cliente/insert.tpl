@@ -27,26 +27,26 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="name">CPF</label>
-                                                    <input type="input" class="form-control " id="cpf_cliente" name="cpf_cliente" required>    
+                                                    <input type="number" class="form-control " id="cpf_cliente" name="cpf_cliente" minlength="8" required>    
                                                 </div>
 
                                             </div>  
                                             <div class="row">
                                                 <div class="col-md-2">
                                                     <label for="name">RG</label>
-                                                    <input type="input" class="form-control" id="rg_cliente" name="rg_cliente" required>  
+                                                    <input type="number" class="form-control" id="rg_cliente" name="rg_cliente" minlength="6" required>  
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label for="name">UC</label>
-                                                    <input type="input" class="form-control" id="codigo_uc" name="codigo_uc" required>
+                                                    <input type="number" class="form-control" id="codigo_uc" name="codigo_uc" required>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label for="name">NIS</label>
-                                                    <input type="input" class="form-control" id="codigo_nis" name="codigo_nis" required>
+                                                    <input type="number" class="form-control" id="codigo_nis" name="codigo_nis" required>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="name">Telefone</label>
-                                                    <input type="input" class="form-control" id="telefone_cliente" name="telefone_cliente" required>
+                                                    <input type="number" class="form-control" id="telefone_cliente" name="telefone_cliente" minlength="8" required>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -72,7 +72,8 @@
                                                 </div>
                                             </div>
                                             <br>
-                                            <button type="submit" class="btn btn-default">Save</button>
+                                            <button type="submit" class="btn btn-default" style="width: 85px">Salvar</button>
+                                            <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
                                         </div>
                                     </div>
                             </form>

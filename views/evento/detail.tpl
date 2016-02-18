@@ -25,14 +25,13 @@
                             <table class="table table-striped">                        
                                 <tbody>
                                     <tr><td>ID</td>  <td>{$registro.id_evento}</td></tr>
-                                    <tr><td>CIDADE</td>  <td>{$cidade.des_cidade}</td></tr>
-                                    <tr><td>DESCRICAO</td>  <td>{$registro.des_evento}</td></tr>
-                                    <tr><td>STATUS DO EVENTO</td>  <td>{$registro.status_evento}</td>  </tr>        
-                                    <tr><td>DATA CADASTRO</td>  <td>{$registro.dt_cadastro}</td>                               
+                                    <tr><td>Cidade</td>  <td>{$cidade.des_cidade}</td></tr>
+                                    <tr><td>Descrição</td>  <td>{$registro.des_evento}</td></tr>
+                                    <tr><td>Status do Evento</td>  <td>{$registro.status_evento}</td>  </tr>        
+                                    <tr><td>Data de Cadastro</td>  <td>{$registro.dt_cadastro}</td>                               
                                 </tbody>
                             </table>  
-                            <input class="btn btn-default" type="reset" value="VOLTAR" name="btnnao" onclick="window.history.back();"/>
-
+                            <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Voltar</button>
 
 
                         </div>
