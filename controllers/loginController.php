@@ -32,7 +32,7 @@ class login extends controller {
             header("Location: /index");
         } else {
             $session->sessao_limpa();
-            header("Location: /login/msg/invalido");
+            header("Location: /login");
         }
     }
 
