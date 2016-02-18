@@ -41,7 +41,7 @@ class eventoModel extends model {
     }
 
     /** Update the Entity */
-    public function upEvento($array) {
+    public function updEvento($array) {
         //Chave    
         $where = $this->campo_chave . " = " . $array[$this->campo_chave];
         $this->startTransaction();

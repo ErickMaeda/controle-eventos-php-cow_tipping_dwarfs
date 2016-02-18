@@ -50,6 +50,7 @@ class departamento extends controller {
         $modelDepartamento = new departamentoModel();
         $dados['id_departamento'] = $id;
         $modelDepartamento->delDepartamento($dados);
+        $modelDepartamento->updDepartamento($dados);
         header('Location: /departamento');
     }
 

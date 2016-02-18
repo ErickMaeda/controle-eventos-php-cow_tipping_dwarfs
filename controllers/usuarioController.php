@@ -20,6 +20,7 @@ class usuario extends controller {
     }
 
     public function save() {
+        
         $modelUsuario = new usuarioModel();
         $dados['nome_usuario'] = $_POST['nome_usuario'];
         $dados['email_usuario'] = $_POST['email_usuario'];
@@ -52,7 +53,9 @@ class usuario extends controller {
         $id = $this->getParam('id_usuario');
         $modelUsuario = new usuarioModel();
         $dados['id_usuario'] = $id;
+        $dados['stat'] = 0;
         $modelUsuario->delUsuario($dados);
+        
         header('Location: /usuario');
     }
 }

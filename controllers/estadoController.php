@@ -60,7 +60,8 @@ class estado extends controller {
         $id = $this->getParam('id_estado');
         $modelEstado = new estadoModel();
         $dados['id_estado'] = $id;
-        $modelEstado->delEstado($dados);
+        $dados['stat'] = 0;
+        $modelEstado->updEstado($dados);
 
         
         header('Location: /estado');

@@ -2,15 +2,12 @@
 <html lang="en">
 
     <head>
-
         {include file="comum/head.tpl"}
-
     </head>
 
     <body>
-
+        
         <div id="wrapper">
-
             <!-- Sidebar -->
             {include file="comum/sidebar.tpl"}
             <!-- /#sidebar-wrapper -->
@@ -20,9 +17,9 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1>{$title}</h1>                        
+                            <h1>{$title}</h1>                   
                             <a href="/usuario/insert" class="btn btn-default" id="btn_novo">Novo Usuário</a>
-                            <br>
+                            <br><br>
                             {include file="usuario/index_grid.tpl"}
                         </div>
                     </div>

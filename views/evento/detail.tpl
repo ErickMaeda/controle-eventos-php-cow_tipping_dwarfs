@@ -32,6 +32,27 @@
                                 </tbody>
                             </table>  
 
+                            <div class="panel panel-default">
+                                <div class="panel panel-body">
+                                    <div class="col-xs-12">
+                                        <div class="row">
+                                            <table class="table table-striped">                        
+                                                <tbody>
+                                                    <tr><td>ID</td>  <td>{$registro.id_evento}</td></tr>
+                                                    <tr><td>Cidade</td>  <td>{$cidade.des_cidade}</td></tr>
+                                                    <tr><td>Descrição</td>  <td>{$registro.des_evento}</td></tr>
+                                                    <tr><td>Status do Evento</td>  <td>{$registro.status_evento}</td>  </tr>        
+                                                    <tr><td>Data de Cadastro</td>  <td>{$registro.dt_cadastro}</td>                               
+                                                </tbody>
+                                            </table> 
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Voltar</button>
+
 
                         </div>
 

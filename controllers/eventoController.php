@@ -19,7 +19,7 @@ class evento extends controller {
         $cidadeModel = new cidadeModel();
         $res_evento = $eventoModel->getEvento('stat<>0');
         $res_cidade = $cidadeModel->getCidade('stat<>0');
-        $this->smarty->assign('title', 'evento');
+        $this->smarty->assign('title', 'Novo Evento');
         $this->smarty->assign('cidade', $res_cidade);
         $this->smarty->display('evento/insert.tpl');
     }
@@ -42,6 +42,7 @@ class evento extends controller {
         $evento['des_evento'] = $_POST['des_evento'];
         $evento['status_evento'] = $_POST['status_evento'];
         $eventoModel->upEvento($evento);
+
         header('Location: /evento');
     }
 
@@ -86,7 +87,8 @@ class evento extends controller {
         $id = $this->getParam('id_evento');
         $eventoModel = new eventoModel();
         $dados['id_evento'] = $id;
-        $eventoModel->delEvento($dados);
+        $dados['stat'] = 0;
+        $eventoModel->updEvento($dados);
 
         header('Location: /evento');
     }
