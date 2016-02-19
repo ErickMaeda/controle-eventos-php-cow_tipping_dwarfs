@@ -16,27 +16,17 @@
         <li>
             <a href="/cracha">Emissão de Crachá</a>
         </li>
-
-        <li>
-            <a href="/emissaoCracha">Crachas</a>
-        </li>
         
         <li>
             <a data-toggle="collapse" data-target="#cadastro"><i class="fa fa-fw fa-edit"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i></a>
             <ul id="cadastro" class="collapse">
+                
                 <li>
                     <a href="/usuario">Usuário</a>
                 </li>
                 <li>
                     <a href="/cliente">Cliente</a>
                 </li>
-                <li>
-                    <a href="/estoque">Estoque</a>
-                </li>
-                <li>
-                    <a href="/movimentacao">Movimentacao</a>
-                </li>
-                <li>
                     <a href="/evento">Evento</a>
                 </li>
                 <li>

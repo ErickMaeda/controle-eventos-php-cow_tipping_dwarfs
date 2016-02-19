@@ -20,9 +20,8 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1>Welcome to Chayote PHP</h1>
-                            <p>Help us to improve this litle Framework</p>
-                            <p>Make sure to keep all page content within the <code>https://github.com/fabioalvaro/ChayotePHP</code>.</p>
+                            <h1>Ben-Vindo ao Chayotator</h1>
+                            
                             <br>
                             <br>
                             <br>
