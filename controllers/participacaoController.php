@@ -12,7 +12,7 @@ class participacao extends controller {
         $resEvento = $modelEvento->getEvento('stat<>0');
         //send the records to template sytem
         $this->smarty->assign('evento', $resEvento);
-        $this->smarty->assign('title', 'participacao');
+        $this->smarty->assign('title', 'Participação');
         //call the smarty
         $this->smarty->display('participacao/index.tpl');
     }

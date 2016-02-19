@@ -9,66 +9,66 @@ class cracha extends controller {
         $session = new session();
         $session->sessao_valida();
         //list all records
-        $produto_model = new produtoModel();
-        $produto_res = $produto_model->getProdutoDepartamento("SELECT id_produto,des_produto,e.id_departamento,des_departamento FROM produto c inner join departamento e on (c.id_departamento=e.id_departamento AND e.stat<>0) WHERE c.stat<>0");
+        $cracha_model = new crachaModel();
+        $cracha_res = $cracha_model->getCrachaDepartamento("SELECT id_cracha,des_cracha,e.id_departamento,des_departamento FROM cracha c inner join departamento e on (c.id_departamento=e.id_departamento AND e.stat<>0) WHERE c.stat<>0");
 
-        $this->smarty->assign('listproduto', $produto_res);
-        $this->smarty->assign('title', 'Produtos');
-        $this->smarty->display('produto/index.tpl');
+        $this->smarty->assign('listcracha', $cracha_res);
+        $this->smarty->assign('title', 'Crachas');
+        $this->smarty->display('cracha/index.tpl');
     }
 
     public function insert() {
         $departamento_model = new departamentoModel();
         $departamento_res = $departamento_model->getDepartamento('stat<>0');
-        $this->smarty->assign('title', 'Novo Produto');
+        $this->smarty->assign('title', 'Novo Cracha');
         $this->smarty->assign('departamento', $departamento_res);
-        $this->smarty->display('produto/insert.tpl');
+        $this->smarty->display('cracha/insert.tpl');
     }
 
     public function save() {
-        $modelProduto = new produtoModel();
-        $dados['des_produto'] = $_POST['des_produto'];
+        $modelCracha = new crachaModel();
+        $dados['des_cracha'] = $_POST['des_cracha'];
         $dados['id_departamento'] = $_POST['id_departamento'];
-        $dados['qtd_produto'] = $_POST['qtd_produto'];
-        $modelProduto->setProduto($dados);
+        $dados['qtd_cracha'] = $_POST['qtd_cracha'];
+        $modelCracha->setCracha($dados);
 
-        header('Location: /produto');
+        header('Location: /cracha');
     }
 
     public function update() {
-        $id = $this->getParam('id_produto');
+        $id = $this->getParam('id_cracha');
 
-        $modelProduto = new produtoModel();
-        $dados['id_produto'] = $id;
-        $dados['des_produto'] = $_POST['des_produto'];
-        $dados['qtd_produto'] = $_POST['qtd_produto'];
+        $modelCracha = new crachaModel();
+        $dados['id_cracha'] = $id;
+        $dados['des_cracha'] = $_POST['des_cracha'];
+        $dados['qtd_cracha'] = $_POST['qtd_cracha'];
         $dados['id_departamento'] = $_POST['id_departamento'];
-        $modelProduto->updProduto($dados);
+        $modelCracha->updCracha($dados);
 
-        header('Location: /produto');
+        header('Location: /cracha');
     }
 
     public function edit() {
 
-        $id = $this->getParam('id_produto');
-        $modelProduto = new produtoModel();
-        $resProduto = $modelProduto->getProduto('id_produto=' . $id);
+        $id = $this->getParam('id_cracha');
+        $modelCracha = new crachaModel();
+        $resCracha = $modelCracha->getCracha('id_cracha=' . $id);
         $departamento_model = new departamentoModel();
         $departamento_res = $departamento_model->getDepartamento('stat<>0');
-        $this->smarty->assign('registro', $resProduto[0]);
+        $this->smarty->assign('registro', $resCracha[0]);
         $this->smarty->assign('departamento', $departamento_res);
-        $this->smarty->assign('id_choosen', $resProduto[0]['id_departamento']);
-        $this->smarty->assign('title', 'Atualizar Produto');
+        $this->smarty->assign('id_choosen', $resCracha[0]['id_departamento']);
+        $this->smarty->assign('title', 'Atualizar Cracha');
         //call the smarty
-        $this->smarty->display('produto/update.tpl');
+        $this->smarty->display('cracha/update.tpl');
     }
 
     public function delete() {
-        $id = $this->getParam('id_produto');
-        $modelProduto = new produtoModel();
-        $dados['id_produto'] = $id;
+        $id = $this->getParam('id_cracha');
+        $modelCracha = new crachaModel();
+        $dados['id_cracha'] = $id;
         $dados['stat'] = 0;
-        $modelProduto->updProduto($dados);
-        header('Location: /produto');
+        $modelCracha->updCracha($dados);
+        header('Location: /cracha');
     }
 }

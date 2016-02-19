@@ -1,37 +1,48 @@
-<div class="panel panel-default">
-    <div class="panel panel-body">
-        <div class="col-xs-12">
-            <div class="row">
+<!DOCTYPE html>
+<html lang="en">
 
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Produto</th>
-                            <th>Departamento</th>
+    <head>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {foreach from=$listproduto item="linha"}
-                            <tr>                                                                
-                                <td>{$linha.id_produto}</td>
-                                <td>{$linha.des_produto}</td>
-                                <td>{$linha.des_departamento}</td>
+        {include file="comum/head.tpl"}
 
-                                <td> 
-                                    <a href="/produto/edit/id_produto/{$linha.id_produto}">Editar</a> | 
-                                    <a href="/produto/delete/id_produto/{$linha.id_produto}" class="del">Deletar</a>
-                                </td>
-                            </tr>
-                        {foreachelse}
-                            <tr><td colspan="100%">Tabela Vazia</td></tr>
-                        {/foreach}          
-                    </tbody>
-                </table>
+    </head>
 
+    <body>
+
+        <div id="wrapper">
+
+            <!-- Sidebar -->
+      {include file="comum/sidebar.tpl"}
+            <!-- /#sidebar-wrapper -->
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1>Color</h1>
+                            <p>This example access the database. use the script chayotedb.sql and configure the config.php to use.
+                                </p>                            
+                            <a href="/color/add" class="btn btn-default" id="btn_novo">New Color</a>
+                            <br>
+                            {include file="color/index_grid.tpl"}
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
+            <!-- /#page-content-wrapper -->
+            
+            
+            
 
+
+        </div>
+        <!-- /#wrapper -->
+
+    {include file="comum/footer.tpl"}    
+    
+     <script src="/files/js/color/index.js"></script>
+
+    </body>
+
+</html>

@@ -14,7 +14,7 @@
         </li>
         
         <li>
-            <a href="/cracha">Emissão de Crachá</a>
+            <a href="/cracha">Emitir Crachá</a>
         </li>
         
         <li>
@@ -27,6 +27,7 @@
                 <li>
                     <a href="/cliente">Cliente</a>
                 </li>
+                <li>
                     <a href="/evento">Evento</a>
                 </li>
                 <li>
