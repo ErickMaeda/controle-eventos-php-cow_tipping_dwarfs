@@ -21,6 +21,7 @@
                                 <td>{$linha.status_evento}</td>
                                 <td>{$linha.dt_cadastro}</td>
                                 <td>                   
+                                    <a href="/evento/produto_grid/id_evento/{$linha.id_evento}">Adicionar Produto</a> |
                                     <a href="/evento/detalhes/id_evento/{$linha.id_evento}">Detalhes</a> |
                                     <a href="/evento/edit/id_evento/{$linha.id_evento}">Editar</a> | 
                                     <a href="/evento/delete/id_evento/{$linha.id_evento}" class="del">Deletar</a>

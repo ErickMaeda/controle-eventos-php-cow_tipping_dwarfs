@@ -10,8 +10,7 @@ class produto extends controller {
         $session->sessao_valida();
         //list all records
         $produto_model = new produtoModel();
-        $produto_res = $produto_model->getProdutoDepartamento("SELECT id_produto,des_produto,e.id_departamento,des_departamento FROM produto c inner join departamento e on (c.id_departamento=e.id_departamento AND e.stat<>0) WHERE c.stat<>0");
-
+        $produto_res = $produto_model->getProdutoDepartamento("SELECT id_produto,des_produto,e.id_departamento,des_departamento, qtd_produto FROM produto c inner join departamento e on (c.id_departamento=e.id_departamento AND e.stat<>0) WHERE c.stat<>0");
         $this->smarty->assign('listproduto', $produto_res);
         $this->smarty->assign('title', 'Produtos');
         $this->smarty->display('produto/index.tpl');

@@ -1,37 +1,36 @@
 <div class="panel panel-default">
     <div class="panel panel-body">
         <div class="col-xs-12">
-            <div class="row">              
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Cidade</th>
-                            <th>Descrição</th>
-                            <th>Status do Evento</th>
-                            <th>Data de Cadastro</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {foreach from=$listevento item="linha"}
-                            <tr>                                                                
-                                <td>{$linha.id_evento}</td>
-                                <td>{$linha.des_cidade}</td>
-                                <td>{$linha.des_evento}</td>
-                                <td>{$linha.status_evento}</td>
-                                <td>{$linha.dt_cadastro}</td>
-                                <td>                   
-                                    <a href="/evento/detalhes/id_evento/{$linha.id_evento}">Detalhes</a> |
-                                    <a href="/evento/edit/id_evento/{$linha.id_evento}">Editar</a> | 
-                                    <a href="/evento/delete/id_evento/{$linha.id_evento}" class="del">Deletar</a>
-                                </td>
-                            </tr>
-                        {foreachelse}
-                            <tr><td colspan="100%">Tabela Vazia</td></tr>
-                        {/foreach}          
-                    </tbody>
-                </table>                   
-            </div>
+            <form role="form" action="/participacao/cliente_evento_insert" method="POST" enctype="multipart/form-data">
+                <div class="row">  
+                    <div class="col-md-4">
+                        <label for="name">Evento</label>
+                        <select type="input" name=id_evento id=id_evento class="btn btn-default dropdown-toggle form-control" >
+                            {foreach from=$evento item=$linha}
+                                <option value="{$linha.id_evento}" >{$linha.des_evento}</option>
+                            {/foreach}
+                        </select>     
+                    </div>
+                    <div class="col-md-4">
+                        <label for="name">Cliente</label>
+                        <input type="input" 
+                               class="form-control "
+                               id="id_cliente" 
+                               name="id_cliente" 
+                               value="{if isset($id_cliente)}{$id_cliente}{/if}" readonly="true" required> <a href="/participacao/busca_cliente">Buscar Cliente</a>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-default">INSERIR</button>
+                    </div>  
+                </div> 
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>{if isset($error)}{$error}{/if}</h4>
+                    </div>  
+                </div> 
+            </form>
         </div>
     </div>
 </div>

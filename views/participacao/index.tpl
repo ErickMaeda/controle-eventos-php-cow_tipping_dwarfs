@@ -21,9 +21,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1>{$title}</h1>                                                  
-                            <a href="/evento/insert" class="btn btn-default" id="btn_novo">Novo Evento</a>
                             <br><br>
-                            {include file="evento/index_grid.tpl"}
+                            {include file="participacao/index_grid.tpl"}
                         </div>
                     </div>
                 </div>

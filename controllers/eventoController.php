@@ -19,6 +19,7 @@ class evento extends controller {
         $cidadeModel = new cidadeModel();
         $res_evento = $eventoModel->getEvento('stat<>0');
         $res_cidade = $cidadeModel->getCidade('stat<>0');
+        $this->smarty->assign('title_produto', 'Evento Produto');
         $this->smarty->assign('title', 'Novo Evento');
         $this->smarty->assign('cidade', $res_cidade);
         $this->smarty->display('evento/insert.tpl');
@@ -41,7 +42,7 @@ class evento extends controller {
         $evento['id_cidade'] = $_POST['id_cidade'];
         $evento['des_evento'] = $_POST['des_evento'];
         $evento['status_evento'] = $_POST['status_evento'];
-        $eventoModel->upEvento($evento);
+        $eventoModel->updEvento($evento);
 
         header('Location: /evento');
     }
@@ -57,10 +58,10 @@ class evento extends controller {
         $produto = $model->readSQL('SELECT ep.id_evento, ep.id_produto, ep.qtd_produto, p.des_produto, e.des_evento 
             FROM evento_produto ep 
             LEFT JOIN produto p ON (p.id_produto = ep.id_produto)
-            LEFT JOIN evento e ON (e.id_evento = ep.id_evento) WHERE ep.id_evento=' . $id); //Full table Scan :( or :) 
+            LEFT JOIN evento e ON (e.id_evento = ep.id_evento) WHERE ep.id_evento=' . $id . ' AND ep.stat<>0'); //Full table Scan :( or :) 
         $this->smarty->assign('registro', $res[0]);
         $this->smarty->assign('cidade', $resCidade[0]);
-        $this->smarty->assign('title', 'Detalhe do evento');        
+        $this->smarty->assign('title', 'Detalhe do evento');
         $this->smarty->assign('produto', $produto);
         $this->smarty->assign('title_produto', 'Evento Produto');
         //call the smarty
@@ -96,23 +97,45 @@ class evento extends controller {
     public function produto_save() {
 
         $model = new model();
-        $produto_evento['id_evento'] = $_POST['id_evento'];
-        $produto_evento['des_evento'] = $_POST['des_evento'];
-        $produto_evento['status_evento'] = $_POST['status_evento'];
-        $produto_evento['dt_cadastro'] = date("Y-m-d H:i:s");
+        $id = $this->getParam('id_evento');
+        $produto_evento['id_evento'] = $id;
+        $produto_evento['id_produto'] = $_POST['id_produto'];
+        $produto_evento['qtd_produto'] = $_POST['qtd_produto'];
         $model->insert('evento_produto', $produto_evento);
         header('Location: /evento');
     }
 
     public function produto_grid() {
 
+        $id = $this->getParam('id_evento');
         $produto_model = new produtoModel();
         $resProduto = $produto_model->getProduto();
-        //send the records to template sytem
+        $model = new model();
+        $produto = $model->readSQL('
+            SELECT ep.id_evento, ep.id_produto, ep.qtd_produto, p.des_produto, e.des_evento 
+            FROM evento_produto ep 
+            LEFT JOIN produto p ON (p.id_produto = ep.id_produto)
+            LEFT JOIN evento e ON (e.id_evento = ep.id_evento)
+            WHERE ep.stat<>0 AND ep.id_evento='.$id); //Full table Scan :( or :)
+        $this->smarty->assign('produto_evento', $produto);
+        $this->smarty->assign('title_produto', 'Evento Produto');
         $this->smarty->assign('produto', $resProduto);
+        $this->smarty->assign('id_evento', $id);
         $this->smarty->assign('title', 'Cadastrar Produto');
-        //call the smarty
         $this->smarty->display('evento/produto_grid.tpl');
+    }
+
+    public function produto_delete() {
+
+        $id_evento = $this->getParam('id_evento');
+        $id_produto = $this->getParam('id_produto');
+        $dados['id_evento'] = $id_evento;
+        $dados['id_produto'] = $id_produto;
+        $dados['stat'] = 0;
+        $model = new model();
+        $model->update("evento_produto", $dados, "id_produto=$id_produto AND id_evento=$id_evento AND stat<>0");
+
+        header('Location: /evento');
     }
 
 }

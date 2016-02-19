@@ -10,9 +10,13 @@
         </li>
 
         <li>
-            <a href="/color">Participações</a>
+            <a href="/participacao">Participações</a>
         </li>
 
+        <li>
+            <a href="/emissaoCracha">Crachas</a>
+        </li>
+        
         <li>
             <a data-toggle="collapse" data-target="#cadastro"><i class="fa fa-fw fa-edit"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i></a>
             <ul id="cadastro" class="collapse">

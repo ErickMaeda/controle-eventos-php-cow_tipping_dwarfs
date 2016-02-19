@@ -22,15 +22,6 @@
 
                         <div class="col-lg-12">
                             <h1>{$title}</h1>
-                            <table class="table table-striped">                        
-                                <tbody>
-                                    <tr><td>ID</td>  <td>{$registro.id_evento}</td></tr>
-                                    <tr><td>Cidade</td>  <td>{$cidade.des_cidade}</td></tr>
-                                    <tr><td>Descrição</td>  <td>{$registro.des_evento}</td></tr>
-                                    <tr><td>Status do Evento</td>  <td>{$registro.status_evento}</td>  </tr>        
-                                    <tr><td>Data de Cadastro</td>  <td>{$registro.dt_cadastro}</td>                               
-                                </tbody>
-                            </table>  
 
                             <div class="panel panel-default">
                                 <div class="panel panel-body">
@@ -51,9 +42,6 @@
                                 </div>
                             </div>
 
-                            <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Voltar</button>
-
-
                         </div>
 
 
@@ -65,18 +53,36 @@
 
                         <div class="col-lg-12">
                             <h1>{$title_produto}</h1>
-                            <table class="table table-striped">                        
-                                <tbody>
-                                    {foreach from=$produto item=$linha}
-                                        <tr><td>Produto</td>  <td>{$linha.des_produto}</td></tr>
-                                        <tr><td>Quantidade</td>  <td>{$linha.qtd_produto}</td></tr> 
 
-                                    {foreachelse}
-                                        <tr><td colspan="100%">Tabela Vazia</td></tr>
-                                    {/foreach}
-                                </tbody>
-                            </table>  
-
+                            <div class="panel panel-default">
+                                <div class="panel panel-body">
+                                    <div class="col-xs-12">
+                                        <div class="row">
+                                            <table class="table table-striped">   
+                                                <thead>
+                                                    <tr>
+                                                        <th>PRODUTO</th>
+                                                        <th>QUANTIDADE</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {foreach from=$produto item=$linha}
+                                                        <tr>
+                                                            <td>{$linha.des_produto}</td>
+                                                            <td>{$linha.qtd_produto}</td>
+                                                            <td>                 
+                                                                <a href="/evento/produto_delete/id_evento/{$linha.id_evento}/id_produto/{$linha.id_produto}" class="del">Deletar</a>
+                                                            </td>
+                                                        </tr> 
+                                                    {foreachelse}
+                                                        <tr><td colspan="100%">Tabela Vazia</td></tr>
+                                                    {/foreach}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Voltar</button>
 
                         </div>
