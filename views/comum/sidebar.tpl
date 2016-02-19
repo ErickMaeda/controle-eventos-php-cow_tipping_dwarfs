@@ -12,6 +12,10 @@
         <li>
             <a href="/participacao">Participações</a>
         </li>
+        
+        <li>
+            <a href="/cracha">Emissão de Crachá</a>
+        </li>
 
         <li>
             <a href="/emissaoCracha">Crachas</a>

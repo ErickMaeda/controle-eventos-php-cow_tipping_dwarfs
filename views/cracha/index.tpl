@@ -8,7 +8,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Produto</th>
-                            <th>Quantidade Estoque</th>
                             <th>Departamento</th>
 
                         </tr>
@@ -18,7 +17,6 @@
                             <tr>                                                                
                                 <td>{$linha.id_produto}</td>
                                 <td>{$linha.des_produto}</td>
-                                <td>{$linha.qtd_produto}</td>
                                 <td>{$linha.des_departamento}</td>
 
                                 <td> 
@@ -36,3 +34,4 @@
         </div>
     </div>
 </div>
+
