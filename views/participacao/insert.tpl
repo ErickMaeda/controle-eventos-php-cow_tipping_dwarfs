@@ -23,7 +23,7 @@
                                             <div class="col-md-4">
                                                 <label for="name">Evento</label>
                                                 <select type="input" name=id_evento id=id_evento class="btn btn-default dropdown-toggle form-control" >
-                                                    <option value="{$data.id_evento}" disabled="true" >{$data.des_evento}</option>
+                                                    <option value="{$data.id_evento}" selected="selected" disabled="true" >{$data.des_evento}</option>
                                                 </select>     
                                             </div>
                                             <div class="col-md-4">
@@ -32,7 +32,7 @@
                                                        class="form-control "
                                                        id="id_cliente" 
                                                        name="id_cliente" 
-                                                       value="{if isset($id_cliente)}{$id_cliente}{/if}" disabled="true" required>
+                                                       value="{if isset($data.id_cliente)}{$data.id_cliente}{/if}" disabled="true" required>
                                             </div> 
                                         </div>  
                                     </div>
@@ -51,20 +51,27 @@
                                     </div>
                                     <div class="col-md-5">
                                         <br>
+                                        <input type="hidden" name="id_evento_cliente" value="{$data.id_evento_cliente}" id="id_evento_cliente">
                                         <button class="btn btn-default" id="snap">Tirar Foto</button>
                                         <button class="btn btn-default" id="save">Salvar Foto</button>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="panel panel-default">
-                                <div class="panel panel-body">
-                                    <div class="col-xs-12">
-                                        <label for="file">Selecione a imagem para upload:</label>
-                                        <input type="file" class="form-control" name="fileToUpload" id="fileToUpload">
+                            <form action="/participacao/uploadFile/id_evento_cliente/{$data.id_evento_cliente}" method="POST" enctype="multipart/form-data">
+                                <div class="panel panel-default">
+                                    <div class="panel panel-body">
+                                        <div class="col-xs-12">
+                                            <div >
+                                                <label class="col-md-12" for="file">Selecione a imagem para upload: </label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <input class="col-md-12" type="file" class="form-control" name="fileToUpload" id="fileToUpload">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <button class="btn btn-default col-md-12" type="submit" > FINALIZAR </button>
+                            </form>
                         </div>
                     </div>
                 </div>
