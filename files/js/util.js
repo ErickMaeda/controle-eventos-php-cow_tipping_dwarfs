@@ -13,22 +13,27 @@ function showMessage(errorText, time, type, redirect) {
         stayTime: time,
         position: 'middle-center',
         type: type,
-        close: function() {
+        close: function () {
             if (redirect !== null)
                 window.location = redirect
         }
     });
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
     //alert('opa');
-    
-    
- $(".del").click(function(){
-    if (!confirm("TEM CERTEZA QUE QUER APAGAR ESSE REGISTRO!?")){
-      return false;
-    }
-  });
+
+    $(".noevent").click(function () {
+        if (!confirm("O usuário não participa de nenhum evento!")) {
+            return false;
+        }
+    });
+
+    $(".del").click(function () {
+        if (!confirm("TEM CERTEZA QUE DESEJA APAGAR ESSE REGISTRO!?")) {
+            return false;
+        }
+    });
 
 });
 
@@ -70,8 +75,7 @@ function valida_cnpj(cnpj) {
         if (resultado != digitos.charAt(1))
             return false;
         return true;
-    }
-    else
+    } else
         return false;
 }
 
@@ -99,7 +103,7 @@ function valida_data(valor) {
     var ardt = new Array;
     var ExpReg = new RegExp("(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/[12][0-9]{3}");
 
-    ardt = date.split("/");    
+    ardt = date.split("/");
 
     var erro = false;
 

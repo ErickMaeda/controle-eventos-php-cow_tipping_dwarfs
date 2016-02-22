@@ -60,8 +60,6 @@ class cliente extends controller {
         $cliente['id_estado'] = $_POST['id_estado'];
         $cliente['id_cidade'] = $_POST['id_cidade'];
         $cliente['telefone_cliente'] = $_POST['telefone_cliente'];
-
-
         $model_cliente->updCliente($cliente);
 
         header('Location: /cliente');

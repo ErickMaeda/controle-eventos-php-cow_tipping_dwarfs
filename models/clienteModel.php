@@ -36,11 +36,8 @@ class clienteModel extends model {
     public function setCliente($array) {
 
         $this->startTransaction();
-
         $id = $this->transaction(
-                $this->insert($this->tabPadrao, $array, false)
-        );
-
+        $this->insert($this->tabPadrao, $array, false));
         $this->commit();
 
         return $id;

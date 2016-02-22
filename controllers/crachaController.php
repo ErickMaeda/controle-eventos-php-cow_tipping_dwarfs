@@ -8,67 +8,69 @@ class cracha extends controller {
 
         $session = new session();
         $session->sessao_valida();
-        //list all records
-        $cracha_model = new crachaModel();
-        $cracha_res = $cracha_model->getCrachaDepartamento("SELECT id_cracha,des_cracha,e.id_departamento,des_departamento FROM cracha c inner join departamento e on (c.id_departamento=e.id_departamento AND e.stat<>0) WHERE c.stat<>0");
-
-        $this->smarty->assign('listcracha', $cracha_res);
-        $this->smarty->assign('title', 'Crachas');
+        $modelEvento = new eventoModel();
+        $resEvento = $modelEvento->getEvento('stat<>0');
+        //send the records to template sytem
+        $this->smarty->assign('evento', $resEvento);
+        $this->smarty->assign('title', 'Emissão de Crachá');
+        $this->smarty->assign('listacliente', null);
+        //call the smarty
         $this->smarty->display('cracha/index.tpl');
     }
 
     public function insert() {
-        $departamento_model = new departamentoModel();
-        $departamento_res = $departamento_model->getDepartamento('stat<>0');
-        $this->smarty->assign('title', 'Novo Cracha');
-        $this->smarty->assign('departamento', $departamento_res);
-        $this->smarty->display('cracha/insert.tpl');
+        $this->smarty->assign('title', 'Novo participacao');
+        $this->smarty->display('cracha/index.tpl');
     }
 
     public function save() {
-        $modelCracha = new crachaModel();
-        $dados['des_cracha'] = $_POST['des_cracha'];
-        $dados['id_departamento'] = $_POST['id_departamento'];
-        $dados['qtd_cracha'] = $_POST['qtd_cracha'];
-        $modelCracha->setCracha($dados);
-
-        header('Location: /cracha');
+        $modelparticipacao = new eventoClienteModel();
+        $dados['des_participacao'] = $_POST['des_participacao'];
+        $modelparticipacao->setparticipacao($dados);
+        header('Location: cracha/index.tpl');
     }
 
     public function update() {
-        $id = $this->getParam('id_cracha');
+        $id = $this->getParam('id_participacao');
 
-        $modelCracha = new crachaModel();
-        $dados['id_cracha'] = $id;
-        $dados['des_cracha'] = $_POST['des_cracha'];
-        $dados['qtd_cracha'] = $_POST['qtd_cracha'];
-        $dados['id_departamento'] = $_POST['id_departamento'];
-        $modelCracha->updCracha($dados);
-
-        header('Location: /cracha');
+        $modelparticipacao = new eventoClienteModel();
+        $dados['id_participacao'] = $id;
+        $dados['des_participacao'] = $_POST['des_participacao'];
+        $modelparticipacao->updparticipacao($dados);
+        header('Location: cracha/index.tpl');
     }
 
     public function edit() {
 
-        $id = $this->getParam('id_cracha');
-        $modelCracha = new crachaModel();
-        $resCracha = $modelCracha->getCracha('id_cracha=' . $id);
-        $departamento_model = new departamentoModel();
-        $departamento_res = $departamento_model->getDepartamento('stat<>0');
-        $this->smarty->assign('registro', $resCracha[0]);
-        $this->smarty->assign('departamento', $departamento_res);
-        $this->smarty->assign('id_choosen', $resCracha[0]['id_departamento']);
-        $this->smarty->assign('title', 'Atualizar Cracha');
-        //call the smarty
-        $this->smarty->display('cracha/update.tpl');
+        $id = $this->getParam('id_participacao');
+        $modelparticipacao = new eventoClienteModel();
+        $resparticipacao = $modelparticipacao->getparticipacao('id_participacao=' . $id);
+        $this->smarty->assign('registro', $resparticipacao[0]);
+        $this->smarty->assign('title', 'Atualizar participacao');
+        $this->smarty->display('cracha/index.tpl');
     }
 
     public function delete() {
-        $id = $this->getParam('id_cracha');
-        $modelCracha = new crachaModel();
-        $dados['id_cracha'] = $id;
+
+        $id = $this->getParam('id_participacao');
+        $modelparticipacao = new eventoClienteModel();
+        $dados['id_participacao'] = $id;
         $dados['stat'] = 0;
-        $modelCracha->updCracha($dados);
-        header('Location: /cracha');
+        $modelparticipacao->updparticipacao($dados);
+        header('Location: cracha/index.tpl');
     }
+
+    public function buscar_cliente() {
+        if (isset($_POST['nome_cliente'])) {
+            $modelCliente = new clienteModel();
+            $nome_cliente = $_POST['nome_cliente'];
+            $resCliente = $modelCliente->getCliente("nome_cliente like '%$nome_cliente%'");
+            $this->smarty->assign('title', 'Emissao de Crachas');
+            $this->smarty->assign('listacliente', $resCliente);
+            $this->smarty->display('cracha/index.tpl');
+        }
+    }
+
 }
+
+?>
