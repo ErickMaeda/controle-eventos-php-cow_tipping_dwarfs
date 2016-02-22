@@ -156,6 +156,7 @@ class model {
         }
         $fields = implode(', ', $fields);
         $sql = "UPDATE {$this->_table} SET {$fields} WHERE {$where}";
+        
         // echo $sql."<br>";die;
         $prepare = $this->db->prepare($sql);
         if ($exec) {
