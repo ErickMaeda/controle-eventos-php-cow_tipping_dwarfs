@@ -27,7 +27,7 @@ define('EMAIL_SAC_FOX', 'sistema@fabioalvaro.com.br');//Responsavel pelo SAC FOX
 define('DBHOST', 'localhost');
 define('DBPORT', '3306');
 define('DBUSER', 'root');
-define('DBPASS', 'teste123');
+define('DBPASS', '');
 define('DBNAME', 'cowyotte');
 define('DBENCODING', 'utf8');
 
