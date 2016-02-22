@@ -20,7 +20,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1>Ben-Vindo ao Chayotator</h1>
+                            <h1>Bem vindo ao Chayotator</h1>
                             
                             <br>
                             <br>
