@@ -5,7 +5,6 @@ include_once 'sessionController.php';
 class participacao extends controller {
 
     public function index_action() {
-
         $session = new session();
         $session->sessao_valida();
         $modelEvento = new eventoModel();
@@ -17,11 +16,6 @@ class participacao extends controller {
         $this->smarty->display('participacao/index.tpl');
     }
 
-    public function insert() {
-        $this->smarty->assign('title', 'Novo participacao');
-        $this->smarty->display('participacao/insert.tpl');
-    }
-
     public function cliente_evento_insert() {
         $modelClienteEvento = new eventoClienteModel();
         $model = new model();
@@ -31,7 +25,7 @@ class participacao extends controller {
         $dados['id_cliente'] = $_POST['id_cliente'];
         $dados['dt_cadastro'] = date("Y-m-d H:i:s");
 
-        $exists = $modelClienteEvento->getEventoCliente("id_evento = $id_evento AND id_cliente = $id_cliente");
+        $exists = $modelClienteEvento->getEventoCliente("id_evento = $id_evento AND id_cliente = $id_cliente AND stat <> 0");
         if ($exists) {
             $modelEvento = new eventoModel();
             $resEvento = $modelEvento->getEvento('stat<>0');
@@ -40,17 +34,28 @@ class participacao extends controller {
             $this->smarty->assign('error', 'O cliente já participa deste evento!');
             $this->smarty->display('participacao/index.tpl');
         } else {
+            $resProdutoEstoque = $model->readSQL("SELECT ep.id_evento, "
+                    . "ep.qtd_produto, "
+                    . "p.id_produto, "
+                    . "p.qtd_produto as qtd_estoque "
+                    . "FROM evento_produto ep "
+                    . "LEFT JOIN produto p ON (ep.id_produto=p.id_produto)"
+                    . "WHERE ep.id_evento = $id_evento");
+
+            foreach ($resProdutoEstoque as $value) {
+                $data['qtd_produto'] = $value['qtd_estoque'] - $value['qtd_produto'];
+                $result = $model->update('produto', $data, "id_produto = '" . $value['id_produto'] . "'");
+            }
             $resClienteEvento = $modelClienteEvento->setEventoCliente($dados);
             $id_evento_cliente = $resClienteEvento;
-            $fill = $model->readSQL(
-                    "SELECT 
-            ec.*, e.des_evento, c.nome_cliente
-                FROM
-            evento_cliente ec
-                LEFT JOIN
-            cliente c ON (c.id_cliente = ec.id_cliente)
-                LEFT JOIN
-            evento e ON (e.id_evento = ec.id_evento) WHERE id_evento_cliente = $id_evento_cliente");
+            $fill = $model->readSQL("SELECT "
+                    . "ec.*, "
+                    . "e.des_evento, "
+                    . "c.nome_cliente "
+                    . "FROM evento_cliente ec "
+                    . "LEFT JOIN cliente c ON (c.id_cliente = ec.id_cliente) "
+                    . "LEFT JOIN evento e ON (e.id_evento = ec.id_evento) "
+                    . "WHERE id_evento_cliente = $id_evento_cliente");
             $this->smarty->assign('data', $fill[0]);
             $this->smarty->assign('title', 'participacao');
             $this->smarty->display('participacao/insert.tpl');
@@ -62,6 +67,38 @@ class participacao extends controller {
         fwrite($ifp, base64_decode($base64_string));
         fclose($ifp);
         return( $output_file );
+    }
+
+    function cancelarParticipacao() {
+        $id_evento_cliente = $this->getParam('id_evento_cliente');
+        $this->updateEventoCliente($id_evento_cliente);
+        $this->updateEstoqueProduto($id_evento_cliente);
+
+        header('Location: /participacao');
+    }
+
+    function updateEstoqueProduto($id_evento_cliente) {
+        $model = new model();
+        $resProdutoEstoque = $model->readSQL("SELECT "
+                . "ep.id_evento, "
+                . "ep.qtd_produto, "
+                . "p.id_produto, "
+                . "p.qtd_produto as qtd_estoque "
+                . "FROM evento_cliente ec "
+                . "LEFT JOIN evento_produto ep ON (ep.id_evento = ec.id_evento) "
+                . "LEFT JOIN produto p ON (p.id_produto = ep.id_produto) "
+                . "WHERE ec.id_evento_cliente = $id_evento_cliente");
+        foreach ($resProdutoEstoque as $value) {
+            $data['qtd_produto'] = $value['qtd_estoque'] - $value['qtd_produto'];
+            $result = $model->update('produto', $data, "id_produto = '" . $value['id_produto'] . "'");
+        }
+    }
+
+    function updateEventoCliente($id_evento_cliente) {
+        $modelClienteEvento = new eventoClienteModel();
+        $data['id_evento_cliente'] = $id_evento_cliente;
+        $data['stat'] = 0;
+        $modelClienteEvento->upEventoCliente($data);
     }
 
     public function uploadfoto() {
@@ -77,6 +114,10 @@ class participacao extends controller {
     }
 
     public function uploadFile() {
+        if (($_FILES["fileToUpload"]['name']['size'] == '')) {
+            header('Location: /participacao');
+            return;
+        }
         $target_dir = "files/images/";
         $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
         $uploadOk = 1;
@@ -125,42 +166,6 @@ class participacao extends controller {
         }
     }
 
-    public function save() {
-        $modelparticipacao = new eventoClienteModel();
-        $dados['des_participacao'] = $_POST['des_participacao'];
-        $modelparticipacao->setparticipacao($dados);
-        header('Location: /participacao');
-    }
-
-    public function update() {
-        $id = $this->getParam('id_participacao');
-        $modelparticipacao = new eventoClienteModel();
-        $dados['id_participacao'] = $id;
-        $dados['des_participacao'] = $_POST['des_participacao'];
-        $modelparticipacao->updparticipacao($dados);
-        header('Location: /participacao');
-    }
-
-    public function edit() {
-
-        $id = $this->getParam('id_participacao');
-        $modelparticipacao = new eventoClienteModel();
-        $resparticipacao = $modelparticipacao->getparticipacao('id_participacao=' . $id);
-        $this->smarty->assign('registro', $resparticipacao[0]);
-        $this->smarty->assign('title', 'Atualizar participacao');
-        $this->smarty->display('participacao/update.tpl');
-    }
-
-    public function delete() {
-
-        $id = $this->getParam('id_participacao');
-        $modelparticipacao = new eventoClienteModel();
-        $dados['id_participacao'] = $id;
-        $dados['stat'] = 0;
-        $modelparticipacao->updparticipacao($dados);
-        header('Location: /participacao');
-    }
-
     public function busca_cliente() {
 
         if ($this->getParam('id_cliente') != null) {
@@ -182,7 +187,5 @@ class participacao extends controller {
             $this->smarty->display('participacao/busca_cliente.tpl');
         }
     }
-
 }
-
 ?>

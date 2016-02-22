@@ -34,6 +34,9 @@
                                                        name="id_cliente" 
                                                        value="{if isset($data.id_cliente)}{$data.id_cliente}{/if}" disabled="true" required>
                                             </div> 
+                                            <div class="col-md-4">
+                                                <a href="/participacao/cancelarParticipacao/id_evento_cliente/{$data.id_evento_cliente}" class="btn btn-default col-md-4">Cancelar</a>
+                                            </div> 
                                         </div>  
                                     </div>
                                 </div>
