@@ -50,25 +50,10 @@
             <ul id="relatorio" class="collapse">
                 
                 <li>
-                    <a href="/usuario">Usuário</a>
+                    <a href="/participacao/relatorio">Participacao</a>
                 </li>
                 <li>
-                    <a href="/cliente">Cliente</a>
-                </li>
-                <li>
-                    <a href="/evento">Evento</a>
-                </li>
-                <li>
-                    <a href="/cidade">Cidade</a>
-                </li>
-                <li>
-                    <a href="/estado">Estado</a>
-                </li>
-                <li>
-                    <a href="/departamento">Departamento</a>
-                </li>
-                <li>
-                    <a href="/produto">Produto</a>
+                    <a href="/cliente/relatorio">Cliente</a>
                 </li>
             </ul>
         </li>

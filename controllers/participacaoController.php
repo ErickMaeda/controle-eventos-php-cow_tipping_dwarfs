@@ -187,5 +187,37 @@ class participacao extends controller {
             $this->smarty->display('participacao/busca_cliente.tpl');
         }
     }
+
+    function relatorio() {
+        $model = new model();
+        $this->smarty->assign('listacliente', null);
+
+        if (isset($_POST['nome_cliente']) && isset($_POST['des_evento'])) {
+            $sql = ""
+                    . " SELECT "
+                    . " ec . *,"
+                    . " c.nome_cliente,"
+                    . " e.des_evento"
+                    . " FROM evento_cliente ec "
+                    . " LEFT JOIN cliente c ON (c.id_cliente = ec.id_cliente) "
+                    . " LEFT JOIN evento e ON (e.id_evento = ec.id_evento) "
+                    . " WHERE ec.stat <> 0 ";
+
+            if ($_POST['nome_cliente'] != '') {
+                $nome_cliente = $_POST['nome_cliente'];
+                $sql .= " AND c.nome_cliente LIKE '%$nome_cliente%'";
+            } if ($_POST['des_evento'] != '') {
+                $des_evento = $_POST['des_evento'];
+                $sql .= " AND e.des_evento LIKE '%$des_evento%'";
+            } 
+            $resBusca = $model->readSQL($sql);
+            $this->smarty->assign('listacliente', $resBusca);
+        }
+
+        $this->smarty->assign('title', 'Participantes');
+        $this->smarty->display('participacao/relatorio.tpl');
+    }
+
 }
+
 ?>

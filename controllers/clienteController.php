@@ -110,6 +110,37 @@ class cliente extends controller {
         header('Location: /cliente');
     }
 
+    public function relatorio() {
+
+        $this->smarty->assign('title', 'Busca Clientes');
+        $this->smarty->assign('listacliente', null);
+
+        if (isset($_POST['nome_cliente']) && isset($_POST['cpf_cliente']) && isset($_POST['rg_cliente']) && isset($_POST['cracha_stat'])) {
+            $modelCliente = new clienteModel();
+            $nome_cliente = $_POST['nome_cliente'];
+            $cpf_cliente = $_POST['cpf_cliente'];
+            $rg_cliente = $_POST['rg_cliente'];
+            $cracha_stat = $_POST['cracha_stat'];
+
+            $where = "stat<>0";
+            if ($nome_cliente != '') {
+                $where.= " AND nome_cliente like '%$nome_cliente%' ";
+            }
+            if ($rg_cliente != '') {
+                $where.= " AND rg_cliente like '%$rg_cliente%' ";
+            }
+            if ($cpf_cliente != '') {
+                $where.= " AND cpf_cliente like '%$cpf_cliente%' ";
+            }
+            if ($cracha_stat != '') {
+                $where.= " AND cracha_stat like '%$cracha_stat%' ";
+            }
+            $resCliente = $modelCliente->getCliente($where);
+            $this->smarty->assign('listacliente', $resCliente);
+        }
+        $this->smarty->display('cliente/relatorio.tpl');
+    }
+
 }
 
 ?>
