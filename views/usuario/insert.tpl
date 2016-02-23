@@ -44,7 +44,7 @@
 
                                                     {if $smarty.session.usuario.id_usuario_tipo == 2}
                                                         <div class="col-md-12">
-                                                            <label for="name">Usuario Tipo</label>
+                                                            <label for="name">Tipo de Usuario</label>
                                                             <br>
                                                             <select type="input" class="btn btn-default dropdown-toggle form-control" id='id_usuario_tipo' style="width: 250px" name="id_usuario_tipo">
                                                                 <option value="1">Comum</option>
