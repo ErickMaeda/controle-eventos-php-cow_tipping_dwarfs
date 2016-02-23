@@ -36,6 +36,15 @@
                                         </div>
                                     </div>                 
                                     <br>
+                                    {if isset($error)}
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <p style="color: red">
+                                                    Usuario e/ou Senha incorretas
+                                                </p>
+                                            </div>
+                                        </div>
+                                    {/if}
 
                                     <div class="row">
                                         <div class="col-md-3">
@@ -44,7 +53,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <p><img src="/files/images/chayote-default.png"></p>     
+                            <p><img src="/files/logos/chayote-default.png"></p>     
                         </div>
                     </div>
                 </div>

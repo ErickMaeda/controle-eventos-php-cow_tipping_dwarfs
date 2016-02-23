@@ -19,7 +19,7 @@ class login extends controller {
         }
 
         if (strlen(trim($email)) == 0 || strlen(trim($senha) == 0)) {
-            header("Location: /erro");
+            header("Location: /login/error/msg/u_s");
         }
 
         $model = new model();
@@ -32,8 +32,13 @@ class login extends controller {
             header("Location: /index");
         } else {
             $session->sessao_limpa();
-            header("Location: /login");
+            header("Location: /login/error/msg/u_s");
         }
+    }
+
+    public function error() {
+        $this->smarty->assign('error', "Usuario e/ou Senha incorretos");
+        $this->smarty->display('login/index.tpl');
     }
 
 }

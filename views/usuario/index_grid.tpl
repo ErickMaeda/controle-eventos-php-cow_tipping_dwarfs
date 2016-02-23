@@ -26,12 +26,12 @@
                         {/foreach}          
                     </tbody>
                 </table>
-            {if isset($error)}
-                <p style="color: red">
-                    {$error}
-                </p>
-            {/if}
+                {if isset($error)}
+                    <p style="color: red">
+                        {$error}
+                    </p>
+                {/if}
+            </div>
         </div>
     </div>
-</div>
 </div>
