@@ -53,7 +53,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <p><img src="/files/logos/chayote-default.png"></p>     
+                            <p><img src="/files/logos/calendar.jpg"></p>     
                         </div>
                     </div>
                 </div>

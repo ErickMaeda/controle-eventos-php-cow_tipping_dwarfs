@@ -8,7 +8,7 @@
         <li>
             <a href="/">Home</a>
         </li>
-
+{if isset($smarty.session.usuario)}
         <li>
             <a href="/participacao">Participações</a>
         </li>
@@ -58,7 +58,7 @@
             </ul>
         </li>
         
-        {if isset($smarty.session.usuario)}
+        
             <li>
                 <a href="/login">Sair</a>
             </li>
