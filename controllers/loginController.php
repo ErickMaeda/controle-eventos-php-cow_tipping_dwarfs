@@ -13,14 +13,16 @@ class login extends controller {
     function validaLogin() {
         $email = $_POST['email'];
         $senha = $_POST['senha'];
-
+        echo '1';
         if (!isset($email) || !isset($senha)) {
             sessao_limpa();
         }
+        echo '2';
 
         if (strlen(trim($email)) == 0 || strlen(trim($senha) == 0)) {
             header("Location: /erro");
         }
+                echo '3';
 
         $model = new model();
         $query = "SELECT * FROM usuario WHERE email_usuario = '$email' AND senha_usuario = '$senha'";
