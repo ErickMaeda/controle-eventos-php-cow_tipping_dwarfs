@@ -11,25 +11,40 @@
                 </thead>
                 <tbody>
                     {foreach from=$listacliente item="linha"}
-                        <tr>                                                                
-                            <td>{$linha.id_cliente}</td>
-                            <td>{$linha.nome_cliente}</td>
-                            <td>
-                                {if $linha.cracha_stat == 0}
-                                    <a href="/cracha/emissao/id_cliente/{$linha.id_cliente}">Emitir</a>
-                                {else $linha.cracha_stat == 1}
-                                    <p style="color:red" >Emitido</p>
+                        <tr>
+
+                    <div class="col-md-3">
+                        <td>{$linha.id_cliente}</td>
+                    </div>
+
+                    <div class="col-md-3">
+                        <td>{$linha.nome_cliente}</td>
+                    </div>
+                    
+                    <div class="col-md-6">
+                    <td>
+                        
+                            {if $linha.cracha_stat == 0}
+                                <a href="/cracha/emissao/id_cliente/{$linha.id_cliente}">Emitir</a>
+                            {else $linha.cracha_stat == 1}
+                                <span style="color:red" >Emitido</span>
+                                {if $smarty.session.usuario.id_usuario_tipo == 2}
+                                    <span style="color:red;"> | <a style="color:red; font-weight: bold" href="/cracha/emissao/id_cliente/{$linha.id_cliente}">Emitir Novamente</a></span>
                                 {/if}
-                                    <!--
-                                else
-                                    <a style="color:black">Não participante de evento.</a>
-                                /if
-                                 Aqui vai o IF ELSE para o info: Emitir, Emitido, Sem Evento-->
-                            </td>
-                        </tr>
-                    {foreachelse}
-                        <tr><td colspan="100%">Tabela Vazia</td></tr>
-                    {/foreach}          
+                            {/if}
+                        
+                        <!--
+                    else
+                        <a style="color:black">Não participante de evento.</a>
+                    /if
+                     Aqui vai o IF ELSE para o info: Emitir, Emitido, Sem Evento-->
+                    </td>
+                    </div>
+                            
+                    </tr>
+                {foreachelse}
+                    <tr><td colspan="100%">Tabela Vazia</td></tr>
+                {/foreach}          
                 </tbody>
             </table>
         </div>

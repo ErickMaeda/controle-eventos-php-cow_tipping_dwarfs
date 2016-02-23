@@ -55,7 +55,9 @@
         </div>
         <br>
         <br>
-
+        <form  action="/cracha">
+            <button style="margin-left: 25px" class="btn btn-default" type="submit">Voltar</button>            
+        </form>
         <script src="/files/js/util.js"></script>
     </body>
 </html>
