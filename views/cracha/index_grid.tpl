@@ -17,12 +17,14 @@
                             <td>
                                 {if $linha.cracha_stat == 0}
                                     <a href="/cracha/emissao/id_cliente/{$linha.id_cliente}">Emitir</a>
-                                {elseif $linha.cracha_stat == 1}
+                                {else $linha.cracha_stat == 1}
                                     <p style="color:red" >Emitido</p>
-                                {else}
-                                    <a style="color:black">Não participante de evento.</a>
                                 {/if}
-                                <!-- Aqui vai o IF ELSE para o info: Emitir, Emitido, Sem Evento-->
+                                    <!--
+                                else
+                                    <a style="color:black">Não participante de evento.</a>
+                                /if
+                                 Aqui vai o IF ELSE para o info: Emitir, Emitido, Sem Evento-->
                             </td>
                         </tr>
                     {foreachelse}
