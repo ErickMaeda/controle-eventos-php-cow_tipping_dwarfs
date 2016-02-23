@@ -69,19 +69,10 @@ class cracha extends controller {
                     . "LEFT JOIN evento_cliente ec ON (ec.id_cliente = c.id_cliente AND ec.stat<>0) "
                     . "WHERE ec.id_evento_cliente is null "
                     . "AND c.nome_cliente like '%$nome_cliente%' "
-                    . "AND c.stat<>0 "
-                    . "AND c.cracha_stat<>1");
+                    . "AND c.stat<>0 ");
 
-            $resClienteAdmin = $modelCliente->readSQL(""
-                    . "SELECT * FROM cliente c "
-                    . "WHERE c.nome_cliente like '%$nome_cliente%' "
-                    . "AND c.stat <> 0");
 
-            if ($_SESSION['usuario']['id_usuario_tipo'] == 2) {
-                $this->smarty->assign('listacliente', $resClienteAdmin);
-            } else if ($_SESSION['usuario']['id_usuario_tipo'] == 1) {
-                $this->smarty->assign('listacliente', $resClienteUser);
-            }
+            $this->smarty->assign('listacliente', $resClienteUser);
             $this->smarty->assign('title', 'Emissão de Credencias');
             $this->smarty->display('cracha/index.tpl');
         }
