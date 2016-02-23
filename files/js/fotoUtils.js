@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 }, false);
 document.getElementById("snap").addEventListener("click", function () {
-    canvas.getContext("2d").drawImage(video, 0, 0, 640, 480);
+    canvas.getContext("2d").drawImage(video, 0, 0, 300, 300);
     //alert(canvas.toDataURL());
 });
 document.getElementById("save").addEventListener("click", function () {
