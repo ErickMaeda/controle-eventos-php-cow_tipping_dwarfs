@@ -24,6 +24,7 @@ class usuario extends controller {
         $modelUsuario = new usuarioModel();
         if ($modelUsuario->getUsuario(" email_usuario = '$email_usuario' AND stat<>0 ")) {
             header('Location: /usuario/error/msg/usuario_existe');
+            return;
         }
         if (isset($_POST['id_usuario_tipo'])) {
             $dados['id_usuario_tipo'] = $_POST['id_usuario_tipo'];
@@ -37,9 +38,10 @@ class usuario extends controller {
 
     public function error() {
         $msg_erro = $this->getParam('msg');
-        $this->smarty->assign('listusuario', null);
+        $modelUsuario = new usuarioModel();
+        $this->smarty->assign('listusuario', $modelUsuario->getUsuario("stat<>0"));
         $this->smarty->assign('title', 'Usuarios');
-        $this->smarty->assign('error', $msg_erro);
+        $this->smarty->assign('error', "Usuario já Existe");
         $this->smarty->display('usuario/index.tpl');
     }
 
