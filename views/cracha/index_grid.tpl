@@ -20,10 +20,10 @@
                     <div class="col-md-3">
                         <td>{$linha.nome_cliente}</td>
                     </div>
-                    
+
                     <div class="col-md-6">
-                    <td>
-                        
+                        <td>
+
                             {if $linha.cracha_stat == 0}
                                 <a href="/cracha/emissao/id_cliente/{$linha.id_cliente}">Emitir</a>
                             {else $linha.cracha_stat == 1}
@@ -32,15 +32,15 @@
                                     <span style="color:red;"> | <a style="color:red; font-weight: bold" href="/cracha/emissao/id_cliente/{$linha.id_cliente}">Emitir Novamente</a></span>
                                 {/if}
                             {/if}
-                        
-                        <!--
-                    else
-                        <a style="color:black">Não participante de evento.</a>
-                    /if
-                     Aqui vai o IF ELSE para o info: Emitir, Emitido, Sem Evento-->
-                    </td>
+
+                            <!--
+                        else
+                            <a style="color:black">Não participante de evento.</a>
+                        /if
+                         Aqui vai o IF ELSE para o info: Emitir, Emitido, Sem Evento-->
+                        </td>
                     </div>
-                            
+
                     </tr>
                 {foreachelse}
                     <tr><td colspan="100%">Tabela Vazia</td></tr>

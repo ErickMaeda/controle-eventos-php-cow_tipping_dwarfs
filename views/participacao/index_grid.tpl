@@ -44,6 +44,7 @@
                         <th>ID</th>
                         <th>Evento</th>
                         <th>Cliente</th>
+                        <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
