@@ -123,7 +123,6 @@ class model {
         $orderby = ($orderby != NULL ? "ORDER BY {$orderby}" : NULL);
         $sql = "SELECT {$fields} FROM {$this->_table} {$where} {$group_by} {$orderby} {$limit} {$offset} {$freeQuerie}";
         //echo $sql.'<hr />';
-
         $q = $this->db->prepare("SELECT {$fields} FROM {$this->_table} {$where} {$group_by} {$orderby} {$limit} {$offset} {$freeQuerie}");
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);

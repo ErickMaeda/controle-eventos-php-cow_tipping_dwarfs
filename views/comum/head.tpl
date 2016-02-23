@@ -4,7 +4,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Chayote Framework PHP - Example</title>
+    <title>Controle de Eventos</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/files/css/bootstrap.min.css" rel="stylesheet">

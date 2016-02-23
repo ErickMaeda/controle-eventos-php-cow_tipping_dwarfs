@@ -20,12 +20,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1>Bem vindo ao Chayotator</h1>
-                            
+                            <h1>Bem vindo ao Controle de Estoque</h1>
                             <br>
                             <br>
                             <br>
-                            <p><img src="/files/images/chayote-default.png"></p>                            
+                            <p><img src="/files/images/walpapper.png"></p>                            
                         </div>
                     </div>
                 </div>

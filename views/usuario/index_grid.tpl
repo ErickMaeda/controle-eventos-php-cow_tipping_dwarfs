@@ -2,7 +2,7 @@
     <div class="panel panel-body">
         <div class="col-xs-12">
             <div class="row">
-                
+
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -26,7 +26,12 @@
                         {/foreach}          
                     </tbody>
                 </table>
-            </div>
+            {if isset($error)}
+                <p style="color: red">
+                    {$error}
+                </p>
+            {/if}
         </div>
     </div>
+</div>
 </div>

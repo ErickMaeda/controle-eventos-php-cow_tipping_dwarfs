@@ -41,6 +41,17 @@
                                                         <label for="name">Senha</label>
                                                         <input type="password" class="form-control" id="senha_usuario" name="senha_usuario" minlength="4" required style="width: 250px">
                                                     </div>
+
+                                                    {if $smarty.session.usuario.id_usuario_tipo == 2}
+                                                        <div class="col-md-12">
+                                                            <label for="name">Usuario Tipo</label>
+                                                            <br>
+                                                            <select type="input" class="btn btn-default dropdown-toggle form-control" id='id_usuario_tipo' style="width: 250px" name="id_usuario_tipo">
+                                                                <option value="1">Comum</option>
+                                                                <option value="2">Administrador</option>
+                                                            </select>
+                                                        </div>
+                                                    {/if}
                                                 </div>   
                                             </div>
                                         </div>

@@ -1,9 +1,10 @@
 <?php
 
-class session extends controller{
+class session extends controller {
 
-    function sessao_grava($email) {
+    function sessao_grava($email, $usuario_tipo) {
         $_SESSION['usuario']['email'] = $email;
+        $_SESSION['usuario']['id_usuario_tipo'] = $usuario_tipo;
     }
 
     function sessao_valida() {

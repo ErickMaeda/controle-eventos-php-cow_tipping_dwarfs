@@ -20,13 +20,27 @@ class usuario extends controller {
     }
 
     public function save() {
-        
+        $email_usuario = $_POST['email_usuario'];
         $modelUsuario = new usuarioModel();
+        if ($modelUsuario->getUsuario(" email_usuario = '$email_usuario' AND stat<>0 ")) {
+            header('Location: /usuario/error/msg/usuario_existe');
+        }
+        if (isset($_POST['id_usuario_tipo'])) {
+            $dados['id_usuario_tipo'] = $_POST['id_usuario_tipo'];
+        }
         $dados['nome_usuario'] = $_POST['nome_usuario'];
         $dados['email_usuario'] = $_POST['email_usuario'];
         $dados['senha_usuario'] = $_POST['senha_usuario'];
         $modelUsuario->setUsuario($dados);
         header('Location: /usuario');
+    }
+
+    public function error() {
+        $msg_erro = $this->getParam('msg');
+        $this->smarty->assign('listusuario', null);
+        $this->smarty->assign('title', 'Usuarios');
+        $this->smarty->assign('error', $msg_erro);
+        $this->smarty->display('usuario/index.tpl');
     }
 
     public function update() {
@@ -36,6 +50,9 @@ class usuario extends controller {
         $dados['nome_usuario'] = $_POST['nome_usuario'];
         $dados['email_usuario'] = $_POST['email_usuario'];
         $dados['senha_usuario'] = $_POST['senha_usuario'];
+        if (isset($_POST['id_usuario_tipo'])) {
+            $dados['id_usuario_tipo'] = $_POST['id_usuario_tipo'];
+        }
         $modelUsuario->updUsuario($dados);
         header('Location: /usuario');
     }
@@ -55,8 +72,10 @@ class usuario extends controller {
         $dados['id_usuario'] = $id;
         $dados['stat'] = 0;
         $modelUsuario->delUsuario($dados);
-        
+
         header('Location: /usuario');
     }
+
 }
+
 ?>
