@@ -24,7 +24,7 @@
                             <br>
                             <br>
                             <br>
-                            <p><img src="/files/images/walpapper.png"></p>                            
+                            <p><img src="/files/logos/walpapper.png"></p>                            
                         </div>
                     </div>
                 </div>

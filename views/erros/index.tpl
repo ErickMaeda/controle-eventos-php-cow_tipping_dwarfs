@@ -11,6 +11,6 @@
 <p align="center">&nbsp;</p>
 <p align="center">&nbsp;</p>
 <p align="center">&nbsp;</p>
-<p align="center"><img src="/files/images/404.png" width="150px"></p>
+<p align="center"><img src="/files/logos/404.png" width="150px"></p>
 </body>
 </html>
