@@ -16,8 +16,9 @@
                         <input type="input" 
                                class="form-control "
                                id="id_cliente" 
-                               name="id_cliente" 
-                               value="{if isset($id_cliente)}{$id_cliente}{/if}" readonly="true" required> <a href="/participacao/busca_cliente">Buscar Cliente</a>
+                               required="required"
+                               name="id_cliente"
+                               value="{if isset($id_cliente)}{$id_cliente}{/if}" readonly="true"> <a href="/participacao/busca_cliente">Buscar Cliente</a>
                     </div> 
                 </div>
                 <div class="row">
