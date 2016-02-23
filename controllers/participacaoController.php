@@ -100,7 +100,7 @@ class participacao extends controller {
                 . "LEFT JOIN produto p ON (p.id_produto = ep.id_produto) "
                 . "WHERE ec.id_evento_cliente = $id_evento_cliente");
         foreach ($resProdutoEstoque as $value) {
-            $data['qtd_produto'] = $value['qtd_estoque'] - $value['qtd_produto'];
+            $data['qtd_produto'] = $value['qtd_estoque'] + $value['qtd_produto'];
             $result = $model->update('produto', $data, "id_produto = '" . $value['id_produto'] . "'");
         }
     }

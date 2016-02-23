@@ -64,28 +64,42 @@ class cracha extends controller {
         if (isset($_POST['nome_cliente'])) {
             $modelCliente = new clienteModel();
             $nome_cliente = $_POST['nome_cliente'];
-            $resCliente = $modelCliente->getCliente("nome_cliente like '%$nome_cliente%' AND stat<>0");
+            $resClienteUser = $modelCliente->readSQL(""
+                    . "SELECT c.* FROM cliente c "
+                    . "LEFT JOIN evento_cliente ec ON (ec.id_cliente = c.id_cliente AND ec.stat<>0) "
+                    . "WHERE ec.id_evento_cliente is null "
+                    . "AND c.nome_cliente like '%$nome_cliente%' "
+                    . "AND c.stat<>0 "
+                    . "AND c.cracha_stat<>1");
+
+            $resClienteAdmin = $modelCliente->readSQL(""
+                    . "SELECT * FROM cliente c "
+                    . "WHERE c.nome_cliente like '%$nome_cliente%' "
+                    . "AND c.stat <> 0");
+
+            if ($_SESSION['usuario']['id_usuario_tipo'] == 2) {
+                $this->smarty->assign('listacliente', $resClienteAdmin);
+            } else if ($_SESSION['usuario']['id_usuario_tipo'] == 1) {
+                $this->smarty->assign('listacliente', $resClienteUser);
+            }
             $this->smarty->assign('title', 'Emissão de Credencias');
-            $this->smarty->assign('listacliente', $resCliente);
             $this->smarty->display('cracha/index.tpl');
         }
     }
 
-    public function emissao() 
-    {
+    public function emissao() {
         $id = $this->getParam('id_cliente');
         $model_cliente = new clienteModel();
-        $dados['cracha_stat']=1;
+        $dados['cracha_stat'] = 1;
         $dados['id_cliente'] = $id;
         $model_cliente->updCliente($dados);
         $res = $model_cliente->getCliente('id_cliente=' . $id . ' AND stat<>0');
-        
+
         $this->smarty->assign('registro', $res[0]);
         $this->smarty->assign('dt_emissao', date("d/m/Y H:i:s"));
         $this->smarty->assign('title', 'Credencial de Participante');
         //call the smarty
         $this->smarty->display('cracha/emissao.tpl');
-      
     }
 
 }
