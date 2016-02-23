@@ -46,10 +46,10 @@
                                 <div class="panel panel-body">
                                     <div class="col-xs-12">
                                         <div class="col-md-6">
-                                            <video id="video" width="300" height="300" autoplay></video>
+                                            <video id="video" width="640" height="480" autoplay></video>
                                         </div>
                                         <div class="col-md-5">
-                                            <canvas id="canvas" width="300" height="300" ></canvas>
+                                            <canvas id="canvas" width="640" height="480" ></canvas>
                                         </div>
                                     </div>
                                     <div class="col-md-5">
