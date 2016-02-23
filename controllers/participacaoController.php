@@ -9,8 +9,19 @@ class participacao extends controller {
         $session->sessao_valida();
         $modelEvento = new eventoModel();
         $resEvento = $modelEvento->getEvento('stat<>0');
+        $model = new model();
+        $resEventoCliente = $model->readSQL(''
+                . ' SELECT '
+                . ' ec . *,'
+                . ' c.nome_cliente,'
+                . ' e.des_evento'
+                . ' FROM evento_cliente ec'
+                . ' LEFT JOIN cliente c ON (c.id_cliente = ec.id_cliente)'
+                . ' LEFT JOIN evento e ON (e.id_evento = ec.id_evento)'
+                . ' WHERE ec.stat <> 0');
         //send the records to template sytem
         $this->smarty->assign('evento', $resEvento);
+        $this->smarty->assign('listevento', $resEventoCliente);
         $this->smarty->assign('title', 'Participação');
         //call the smarty
         $this->smarty->display('participacao/index.tpl');
@@ -168,9 +179,22 @@ class participacao extends controller {
 
     public function busca_cliente() {
 
+
+        $model = new model();
+        $resEventoCliente = $model->readSQL(''
+                . ' SELECT '
+                . ' ec . *,'
+                . ' c.nome_cliente,'
+                . ' e.des_evento'
+                . ' FROM evento_cliente ec'
+                . ' LEFT JOIN cliente c ON (c.id_cliente = ec.id_cliente)'
+                . ' LEFT JOIN evento e ON (e.id_evento = ec.id_evento)'
+                . ' WHERE ec.stat <> 0');
+
         if ($this->getParam('id_cliente') != null) {
             $modelEvento = new eventoModel();
             $resEvento = $modelEvento->getEvento('stat<>0');
+            $this->smarty->assign('listevento', $resEventoCliente);
             $this->smarty->assign('evento', $resEvento);
             $this->smarty->assign('title', 'participacao');
             $this->smarty->assign('id_cliente', $this->getParam('id_cliente'));

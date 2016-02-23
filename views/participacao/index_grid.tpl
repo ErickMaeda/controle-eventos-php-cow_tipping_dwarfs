@@ -25,12 +25,42 @@
                         <button type="submit" class="btn btn-default">INSERIR</button>
                     </div>  
                 </div> 
+
                 <div class="row">
                     <div class="col-md-4">
                         <h4>{if isset($error)}{$error}{/if}</h4>
                     </div>  
                 </div> 
             </form>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel panel-body">
+        <div class="col-xs-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Evento</th>
+                        <th>Cliente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach from=$listevento item="linha"}
+                        <tr>                                                                
+                            <td>{$linha.id_evento_cliente}</td>
+                            <td>{$linha.des_evento}</td>
+                            <td>{$linha.nome_cliente}</td>
+                            <td>                   
+                                <a href="/participacao/cancelarParticipacao/id_evento_cliente/{$linha.id_evento_cliente}" class="del">Deletar</a>
+                            </td>
+                        </tr>
+                    {foreachelse}
+                        <tr><td colspan="100%">Tabela Vazia</td></tr>
+                    {/foreach}          
+                </tbody>
+            </table> 
         </div>
     </div>
 </div>
