@@ -16,15 +16,14 @@
                             <td>{$linha.nome_cliente}</td>
                             <td>
                                 {if $linha.cracha_stat == 0}
-                                    <a href="">Emitir</a>
+                                    <a href="/cracha/emissao/id_cliente/{$linha.id_cliente}">Emitir</a>
                                 {elseif $linha.cracha_stat == 1}
                                     <p style="color:red" >Emitido</p>
                                 {else}
-                                    <a style="color:black" href="/cracha" class="noevent" >Sem Evento</a>
+                                    <a style="color:black">Não participante de evento.</a>
                                 {/if}
                                 <!-- Aqui vai o IF ELSE para o info: Emitir, Emitido, Sem Evento-->
                             </td>
-
                         </tr>
                     {foreachelse}
                         <tr><td colspan="100%">Tabela Vazia</td></tr>
@@ -34,5 +33,4 @@
         </div>
     </div>
 </div>
-                
-                <script src="/files/js/util.js"></script>
+<script src="/files/js/util.js"></script>

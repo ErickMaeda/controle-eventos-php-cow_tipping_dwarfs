@@ -64,11 +64,30 @@ class cracha extends controller {
         if (isset($_POST['nome_cliente'])) {
             $modelCliente = new clienteModel();
             $nome_cliente = $_POST['nome_cliente'];
-            $resCliente = $modelCliente->getCliente("nome_cliente like '%$nome_cliente%'");
+            $resCliente = $modelCliente->getCliente("nome_cliente like '%$nome_cliente%' AND stat<>0");
             $this->smarty->assign('title', 'Emissao de Crachas');
             $this->smarty->assign('listacliente', $resCliente);
             $this->smarty->display('cracha/index.tpl');
         }
+    }
+
+    public function emissao() {
+        $id = $this->getParam('id_cliente');
+        $model_cliente = new clienteModel();
+        $model_estado = new estadoModel();
+        $model_cidade = new cidadeModel();
+        $res = $model_cliente->getCliente('id_cliente=' . $id . ' AND stat<>0');
+        $resEstado = $model_estado->getEstado('id_estado=' . $res[0]['id_estado']);
+        $resCidade = $model_cidade->getCidade('id_cidade=' . $res[0]['id_cidade']);
+
+        $this->smarty->assign('registro', $res[0]);
+        $this->smarty->assign('dt_emissao', date("d/m/Y H:i:s"));
+
+        $this->smarty->assign('cidade', $resCidade[0]);
+        $this->smarty->assign('estado', $resEstado[0]);
+        $this->smarty->assign('title', 'Credencial de Participante');
+        //call the smarty
+        $this->smarty->display('cracha/emissao.tpl');
     }
 
 }
