@@ -58,7 +58,7 @@
             </ul>
         </li>
         
-        {if isset($_SESSION['usuario'])}
+        {if isset($smarty.session.usuario)}
             <li>
                 <a href="/login">Sair</a>
             </li>

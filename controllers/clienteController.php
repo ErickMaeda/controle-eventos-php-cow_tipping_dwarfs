@@ -112,6 +112,8 @@ class cliente extends controller {
 
     public function relatorio() {
 
+        $session = new session();
+        $session->sessao_valida();
         $this->smarty->assign('title', 'Busca Clientes');
         $this->smarty->assign('listacliente', null);
 

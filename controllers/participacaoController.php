@@ -189,6 +189,8 @@ class participacao extends controller {
     }
 
     function relatorio() {
+        $session = new session();
+        $session->sessao_valida();
         $model = new model();
         $this->smarty->assign('listacliente', null);
 
@@ -209,7 +211,7 @@ class participacao extends controller {
             } if ($_POST['des_evento'] != '') {
                 $des_evento = $_POST['des_evento'];
                 $sql .= " AND e.des_evento LIKE '%$des_evento%'";
-            } 
+            }
             $resBusca = $model->readSQL($sql);
             $this->smarty->assign('listacliente', $resBusca);
         }
