@@ -11,25 +11,33 @@
         <link href="/files/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom CSS -->
         <link href="/files/css/simple-sidebar.css" rel="stylesheet">
-        
+
+        <style>
+            table
+            {
+                width: 50%;
+            } 
+        </style>
+
+
     </head>
     <body>
         <div>
             <div class="panel panel-body">
                 <div class="col-xs-12">
                     <div class="row">
-                        <table border="1" width="200px" class="table table-striped"
-                               >
+                        <table border="3" class="table table-striped" style="width: 40%">
                             <tbody>
                                 <tr>
                                     <td colspan="2" align="center"> <h3>{$title}</h3> </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" align="center"> <h1>FOTO</h1> </td>
+                                    <td colspan="2" align="center"> <img src="/files/images/chayote-default2.jpg" style="width: 25%"></td>
+                                    
                                 </tr>
                                 <tr>
-                                    <td><b>Nome: </b>{$registro.nome_cliente}</td>
-                                    <td><b>ID: </b>{$registro.id_cliente}</td>
+                                    <td style="width: 20%"><b>Nome: </b>{$registro.nome_cliente}</td>
+                                    <td style="width: 20%"><b>ID: </b>{$registro.id_cliente}</td>
                                 </tr>
                                 <tr>
                                     <td><b>RG: </b>{$registro.rg_cliente}</td>
