@@ -65,5 +65,5 @@
             </li>
         {/if}
     </ul>
-    <script src="/files/js/util.js"></script>
+    
 </div>

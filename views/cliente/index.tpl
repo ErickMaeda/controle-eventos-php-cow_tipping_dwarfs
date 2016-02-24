@@ -10,7 +10,6 @@
     <body>
 
         <div id="wrapper">
-
             <!-- Sidebar -->
       {include file="comum/sidebar.tpl"}
             <!-- /#sidebar-wrapper -->
@@ -29,19 +28,10 @@
                     </div>
                 </div>
             </div>
-            <!-- /#page-content-wrapper -->
-            
-            
-            
-
-
+            <!-- /#page-content-wrapper -->                       
         </div>
         <!-- /#wrapper -->
-
     {include file="comum/footer.tpl"}    
-    
-     <script src="/files/js/color/index.js"></script>
-
     </body>
 
 </html>

@@ -36,7 +36,5 @@
             </div>
             <!-- /#wrapper -->
             {include file="comum/footer.tpl"}
-            <script src="/files/js/util.js"></script>
-
     </body>
 </html>

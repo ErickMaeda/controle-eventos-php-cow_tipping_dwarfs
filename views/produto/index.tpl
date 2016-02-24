@@ -2,15 +2,10 @@
 <html lang="en">
 
     <head>
-
         {include file="comum/head.tpl"}
-
     </head>
-
     <body>
-
         <div id="wrapper">
-
             <!-- Sidebar -->
             {include file="comum/sidebar.tpl"}
             <!-- /#sidebar-wrapper -->
@@ -29,13 +24,8 @@
                 </div>
             </div>
             <!-- /#page-content-wrapper -->
-
         </div>
         <!-- /#wrapper -->
-
         {include file="comum/footer.tpl"}    
-        <script src="/files/js/util.js"></script>
-
     </body>
-
 </html>
