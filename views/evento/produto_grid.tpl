@@ -31,7 +31,7 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label for="name">Quantidade</label>
-                                                    <input type="input" class="form-control " id="qtd_produto" name="qtd_produto" required>
+                                                    <input type="number" class="form-control " id="qtd_produto" name="qtd_produto" required>
                                                 </div>
                                             </div>
                                         </div>

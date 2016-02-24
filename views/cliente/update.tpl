@@ -55,7 +55,7 @@
                                                     <label for="name">Cidade</label>
                                                     <select type="input" name=id_cidade id=id_cidade class="btn btn-default dropdown-toggle form-control" >
                                                         {foreach from=$cidade item=$linha}
-                                                            {if $linha.id_cidade == $id_choosen}
+                                                            {if $linha.id_cidade == $id_choosen_cidade}
                                                                 <option value="{$linha.id_cidade}" selected="selected">{$linha.des_cidade}</option>
                                                             {else}
                                                                 <option value="{$linha.id_cidade}" >{$linha.des_cidade}</option>
@@ -67,7 +67,7 @@
                                                     <label for="name">Estado</label>
                                                     <select type="input" name=id_estado id=id_estado class="btn btn-default dropdown-toggle form-control" >
                                                         {foreach from=$estado item=$linha}
-                                                            {if $linha.id_estado == $id_choosen}
+                                                            {if $linha.id_estado == $id_choosen_estado}
                                                                 <option value="{$linha.id_estado}" selected="selected">{$linha.des_estado}</option>
                                                             {else}
                                                                 <option value="{$linha.id_estado}" >{$linha.des_estado}</option>

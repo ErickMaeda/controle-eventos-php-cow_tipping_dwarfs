@@ -61,8 +61,9 @@
         
         
             <li>
-                <a href="/login">Sair</a>
+                <a href="/login" class="exit">Sair</a>
             </li>
         {/if}
     </ul>
+    <script src="/files/js/util.js"></script>
 </div>

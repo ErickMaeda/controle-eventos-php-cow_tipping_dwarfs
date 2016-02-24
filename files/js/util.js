@@ -23,8 +23,8 @@ function showMessage(errorText, time, type, redirect) {
 $(document).ready(function () {
     //alert('opa');
 
-    $(".noevent").click(function () {
-        if (!confirm("O usuário não participa de nenhum evento!")) {
+    $(".exit").click(function () {
+        if (!confirm("Tem certeza que deseja sair?")) {
             return false;
         }
     });

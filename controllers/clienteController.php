@@ -91,11 +91,13 @@ class cliente extends controller {
         $model = new clienteModel();
         $id = $this->getParam('id_cliente');
         $res = $model->getCliente('id_cliente=' . $id . ' AND stat<>0');
-        $resEstado = $model_estado->getEstado();
-        $resCidade = $model_cidade->getCidade();
+        $resEstado = $model_estado->getEstado('stat<>0');
+        $resCidade = $model_cidade->getCidade('stat<>0');
         $this->smarty->assign('cliente', $res[0]);
         $this->smarty->assign('cidade', $resCidade);
         $this->smarty->assign('estado', $resEstado);
+        $this->smarty->assign('id_choosen_cidade', $res[0]['id_cidade']);
+        $this->smarty->assign('id_choosen_estado', $res[0]['id_estado']);
         $this->smarty->assign('title', 'Atualizar cliente');
         //call the smarty
         $this->smarty->display('cliente/update.tpl');
