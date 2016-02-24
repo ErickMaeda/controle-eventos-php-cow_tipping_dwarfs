@@ -19,7 +19,7 @@
                                 <td>{$linha.des_cidade}</td>
                                 <td>{$linha.des_evento}</td>
                                 <td>{$linha.status_evento}</td>
-                                <td>{$linha.dt_cadastro}</td>
+                                <td>{$linha.dt_cadastro|date_format:"%d/%m/%Y %H:%M:%S"}</td>
                                 <td>                   
                                     <a href="/evento/produto_grid/id_evento/{$linha.id_evento}">Adicionar Produto</a> |
                                     <a href="/evento/detalhes/id_evento/{$linha.id_evento}">Detalhes</a> |

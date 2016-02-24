@@ -41,7 +41,7 @@
                                                     <th>RG</th>
                                                     <th>CPF</th>
                                                     <th>Telefone</th>
-                                                    <th>Cracha Emitido</th>
+                                                    <th>Status do Crachá</th>
                                                     <th>Data Cadastro</th>
                                                 </tr>
                                             </thead>
@@ -51,10 +51,15 @@
                                                         <td>{$linha.id_cliente}</td>
                                                         <td>{$linha.nome_cliente}</td>
                                                         <td>{$linha.rg_cliente}</td>
-                                                        <td>{$linha.cpf_cliente}</td>
+                                                        <td>{$linha.cpf_cliente|default:"-"}</td>
                                                         <td>{$linha.telefone_cliente}</td>
-                                                        <td>{$linha.cracha_stat}</td>
-                                                        <td>{$linha.dt_cadastro}</td>
+                                                        <td>{if $linha.cracha_stat == 1}
+                                                            <p style="color:red">Emitido</p>
+                                                            {else}
+                                                                <p>Não Emitido</p>
+                                                            {/if}</td>
+                                                        <!-- <td>$linha.cracha_stat}</td> -->
+                                                        <td>{$linha.dt_cadastro|date_format:"%d/%m/%Y %H:%M:%S"}</td>
                                                     </tr>
                                                 {foreachelse}
                                                     <tr><td colspan="100%">Tabela Vazia</td></tr>

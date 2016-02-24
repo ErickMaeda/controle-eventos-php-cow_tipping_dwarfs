@@ -33,7 +33,7 @@
                                                     <tr><td>Cidade</td>  <td>{$cidade.des_cidade}</td></tr>
                                                     <tr><td>Descrição</td>  <td>{$registro.des_evento}</td></tr>
                                                     <tr><td>Status do Evento</td>  <td>{$registro.status_evento}</td>  </tr>        
-                                                    <tr><td>Data de Cadastro</td>  <td>{$registro.dt_cadastro}</td>                               
+                                                    <tr><td>Data de Cadastro</td>  <td>{$registro.dt_cadastro|date_format:"%d/%m/%Y %H:%M:%S"}</td>                               
                                                 </tbody>
                                             </table> 
 

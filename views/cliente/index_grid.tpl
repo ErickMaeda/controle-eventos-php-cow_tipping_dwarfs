@@ -15,7 +15,7 @@
                             <tr>                                                                
                                 <td>{$linha.id_cliente}</td>
                                 <td>{$linha.nome_cliente}</td>
-                                <td>{$linha.dt_cadastro}</td>
+                                <td>{$linha.dt_cadastro|date_format:"%d/%m/%Y %H:%M:%S"}</td>
 
                                 <td>                   
                                     <a href="/cliente/detalhes/id_cliente/{$linha.id_cliente}">Detalhes</a> |

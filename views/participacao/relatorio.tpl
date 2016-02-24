@@ -44,7 +44,7 @@
                                                     <tr>                                                                
                                                         <td>{$linha.des_evento}</td>
                                                         <td>{$linha.nome_cliente}</td>
-                                                        <td>{$linha.dt_cadastro}</td>
+                                                        <td>{$linha.dt_cadastro|date_format:"%d/%m/%Y %H:%M:%S"}</td>
                                                     </tr>
                                                 {foreachelse}
                                                     <tr><td colspan="100%">Tabela Vazia</td></tr>

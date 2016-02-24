@@ -30,7 +30,7 @@
                                                     <tr><td>Endereço</td>  <td>{$registro.endereco_cliente}</td>  </tr>                                
                                                     <tr><td>Cidade</td>  <td>{$cidade.des_cidade}</td>  </tr>                                
                                                     <tr><td>Estado</td>  <td>{$estado.des_estado}</td>  </tr>                                
-                                                    <tr><td>Data de Cadastro</td>  <td>{$registro.dt_cadastro}</td>  </tr>                                
+                                                    <tr><td>Data de Cadastro</td>  <td>{$registro.dt_cadastro|date_format:"%d/%m/%Y %H:%M:%S"}</td>  </tr>                                
 
                                                 </tbody>
                                             </table>  
