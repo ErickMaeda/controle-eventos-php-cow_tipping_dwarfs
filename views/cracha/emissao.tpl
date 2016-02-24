@@ -32,8 +32,14 @@
                                     <td colspan="2" align="center"> <h3>{$title}</h3> </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" align="center"> <img src="/files/images/chayote-default2.jpg" style="width: 25%"></td>
-                                    
+                                    <td colspan="2" align="center"> 
+                                        {if isset($caminho_foto)}
+                                            <img src="{$caminho_foto}" >
+                                        {else}
+                                            <img src="/files/logos/small.jpg"  style="width: 25%">
+                                        {/if}
+                                    </td>
+
                                 </tr>
                                 <tr>
                                     <td style="width: 20%"><b>Nome: </b>{$registro.nome_cliente}</td>

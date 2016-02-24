@@ -86,6 +86,10 @@ class cracha extends controller {
         $model_cliente->updCliente($dados);
         $res = $model_cliente->getCliente('id_cliente=' . $id . ' AND stat<>0');
 
+        $resFotoCliente = $model_cliente->readSQL('SELECT caminho_foto FROM cliente_foto WHERE id_cliente = ' . $id);
+        if ($resFotoCliente) {
+            $this->smarty->assign('caminho_foto', '/'.$resFotoCliente[0]['caminho_foto']);
+        }
         $this->smarty->assign('registro', $res[0]);
         $this->smarty->assign('dt_emissao', date("d/m/Y H:i:s"));
         $this->smarty->assign('title', 'Credencial de Participante');
