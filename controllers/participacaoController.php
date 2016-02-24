@@ -26,7 +26,11 @@ class participacao extends controller {
         }
         $inicio = $pc - 1;
         $inicio = $inicio * $total_reg;
-        //Busca os registros para o Grid
+        
+        $modelEvento = new eventoModel();
+        $resEvento = $modelEvento->getEvento('stat<>0');
+        $this->smarty->assign('evento', $resEvento);
+        
         $model = new model();
         $qry_limitada = $model->readSQL(" SELECT "
                 . " ec . *,"
@@ -99,14 +103,14 @@ class participacao extends controller {
         }
     }
 
-    function base64_to_jpeg($base64_string, $output_file) {
+    public function base64_to_jpeg($base64_string, $output_file) {
         $ifp = fopen($output_file, "wb");
         fwrite($ifp, base64_decode($base64_string));
         fclose($ifp);
         return( $output_file );
     }
 
-    function cancelarParticipacao() {
+    public function cancelarParticipacao() {
         $id_evento_cliente = $this->getParam('id_evento_cliente');
         $this->updateEventoCliente($id_evento_cliente);
         $this->updateEstoqueProduto($id_evento_cliente);
@@ -114,7 +118,7 @@ class participacao extends controller {
         header('Location: /participacao');
     }
 
-    function updateEstoqueProduto($id_evento_cliente) {
+    public function updateEstoqueProduto($id_evento_cliente) {
         $model = new model();
         $resProdutoEstoque = $model->readSQL("SELECT "
                 . "ep.id_evento, "
@@ -131,7 +135,7 @@ class participacao extends controller {
         }
     }
 
-    function updateEventoCliente($id_evento_cliente) {
+    public function updateEventoCliente($id_evento_cliente) {
         $modelClienteEvento = new eventoClienteModel();
         $data['id_evento_cliente'] = $id_evento_cliente;
         $data['stat'] = 0;
@@ -238,7 +242,7 @@ class participacao extends controller {
         }
     }
 
-    function relatorio() {
+    public function relatorio() {
         $session = new session();
         $session->sessao_valida();
         $model = new model();
