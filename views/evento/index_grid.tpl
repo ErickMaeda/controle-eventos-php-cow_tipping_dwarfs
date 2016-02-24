@@ -31,7 +31,8 @@
                             <tr><td colspan="100%">Tabela Vazia</td></tr>
                         {/foreach}          
                     </tbody>
-                </table>                   
+                </table>    
+                {$paginador}
             </div>
         </div>
     </div>

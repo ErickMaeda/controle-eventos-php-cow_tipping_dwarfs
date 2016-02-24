@@ -33,10 +33,10 @@ class controller extends System {
         $this->template = new template($this->smarty);
     }
 
-    public function paginador($pagina = 1, $total = 0) {
+    public function paginador($pagina = 1, $total = 0, $controler) {
         $html = '';
         //maximo de registros por tela
-        $total_reg = 3;
+        $total_reg = 10;
         //calcula quantas telas
         $maxpaginas = intval($total / $total_reg);
         //adiciona mais uma tela em caso de divisao com quebra
@@ -47,26 +47,26 @@ class controller extends System {
         if ($pagina == 1)
             $link_primeiro = " << ";
         else {
-            $link_primeiro = "<a href='?pagina=1'><<</a>";
+            $link_primeiro = "<a href='/$controler/paginacao/pagina/1'><<</a>";
         }
         //decide anterior 
         if ($pagina == 1)
             $link_anterior = " < ";
         else {
             $anterior = $pagina - 1;
-            $link_anterior = "<a href='?pagina=" . $anterior . "'><</a>";
+            $link_anterior = "<a href='/$controler/paginacao/pagina/" . $anterior . "'><</a>";
         }
         // decide proxima
         if ($maxpaginas == $pagina)
             $link_posterior = " > ";
         else {
-            $link_posterior = "<a href='?pagina=" . ($pagina + 1) . "'> > </a>";
+            $link_posterior = "<a href='/$controler/paginacao/pagina/" . ($pagina + 1) . "'> > </a>";
         }
         //decide ultima
         if ($maxpaginas == $pagina)
             $link_ultimo = " >> ";
         else {
-            $link_ultimo = "<a href='?pagina=" . $maxpaginas . "'>>></a>";
+            $link_ultimo = "<a href='/$controler/paginacao/pagina/" . $maxpaginas . "'>>></a>";
         }
         $label_total = ' Total de Registros: ' . $total;
         // Monta a barra de Navegacao        

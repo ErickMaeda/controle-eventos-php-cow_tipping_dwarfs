@@ -18,9 +18,9 @@ class usuarioModel extends model {
     }
 
     /** Retrieve the Entity */
-    public function getUsuario($where = null) {
+    public function getUsuario($where = null, $limit = null) {
         $select = array('*');
-        return $this->read($this->tabPadrao, $select, $where, null, null, null, null);
+        return $this->read($this->tabPadrao, $select, $where, null, $limit, null, null);
     }
 
     /** Save a new Entity  */

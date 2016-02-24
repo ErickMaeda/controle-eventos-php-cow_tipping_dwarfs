@@ -4,16 +4,44 @@ include_once 'sessionController.php';
 
 class produto extends controller {
 
-    public function index_action() {
+    public function index_action($pagina = 1) {
 
         $session = new session();
         $session->sessao_valida();
-        //list all records
-        $produto_model = new produtoModel();
-        $produto_res = $produto_model->getProdutoDepartamento("SELECT id_produto,des_produto,e.id_departamento,des_departamento, qtd_produto FROM produto c inner join departamento e on (c.id_departamento=e.id_departamento AND e.stat<>0) WHERE c.stat<>0");
-        $this->smarty->assign('listproduto', $produto_res);
+        $_SESSION['pagina'] = $pagina;
+        $this->smarty->assign('paginador', $this->mostraGrid());
+
         $this->smarty->assign('title', 'Produtos');
         $this->smarty->display('produto/index.tpl');
+    }
+
+    public function paginacao() {
+        $this->index_action($this->getParam('pagina'));
+    }
+
+    public function mostraGrid() {
+        $total_reg = "10"; // número de registros por página
+        $pagina = $_SESSION['pagina'];
+
+        if (!$pagina) {
+            $pc = "1";
+        } else {
+            $pc = $pagina;
+        }
+        $inicio = $pc - 1;
+        $inicio = $inicio * $total_reg;
+
+        $produto_model = new produtoModel();
+        $model = new model();
+        $qry_limitada = $produto_model->getProdutoDepartamento("SELECT id_produto,des_produto,e.id_departamento,des_departamento, qtd_produto FROM produto c inner join departamento e on (c.id_departamento=e.id_departamento AND e.stat<>0) WHERE c.stat<>0 LIMIT $inicio,$total_reg");
+
+        $this->smarty->assign('listproduto', $qry_limitada);
+
+        // Total de Registros na tabela    
+        $qry_total = $model->readSQL("SELECT count(*)as total FROM produto WHERE stat<>0");
+        $total_registros = $qry_total[0]['total']; //pega o valor
+        $html = $this->paginador($pc, $total_registros, 'produto');
+        return $html;
     }
 
     public function insert() {
@@ -70,6 +98,7 @@ class produto extends controller {
         $modelProduto->updProduto($dados);
         header('Location: /produto');
     }
+
 }
 
 ?>
