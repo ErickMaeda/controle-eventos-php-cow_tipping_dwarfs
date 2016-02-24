@@ -49,6 +49,11 @@ class participacao extends controller {
     }
 
     public function cliente_evento_insert() {
+        if ($_POST['id_cliente'] == '') {
+            header('Location: /participacao');
+            return;
+        }
+
         $modelClienteEvento = new eventoClienteModel();
         $model = new model();
         $id_evento = $_POST['id_evento'];
