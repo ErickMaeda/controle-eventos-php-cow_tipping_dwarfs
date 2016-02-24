@@ -72,6 +72,7 @@ class participacao extends controller {
             $resEvento = $modelEvento->getEvento('stat<>0');
             $this->smarty->assign('title', 'Participação');
             $this->smarty->assign('evento', $resEvento);
+            $this->smarty->assign('paginador', $this->mostraGrid());
             $this->smarty->assign('error', 'O cliente já participa deste evento!');
             $this->smarty->display('participacao/index.tpl');
         } else {
