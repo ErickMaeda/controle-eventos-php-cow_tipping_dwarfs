@@ -32,7 +32,14 @@
                                                     <tr><td>ID</td>  <td>{$registro.id_evento}</td></tr>
                                                     <tr><td>Cidade</td>  <td>{$cidade.des_cidade}</td></tr>
                                                     <tr><td>Descrição</td>  <td>{$registro.des_evento}</td></tr>
-                                                    <tr><td>Status do Evento</td>  <td>{$registro.status_evento}</td>  </tr>        
+                                                    <tr><td>Status do Evento</td>
+                                                        <td>{if $registro.status_evento == 1}
+                                                            <p style="color:limegreen; font-weight: bold" >Aberto</p>
+                                                            {else}
+                                                            <p style="color:red; font-weight: bold" >Fechado</p>    
+                                                            {/if}
+                                                        </td>
+                                                    </tr>        
                                                     <tr><td>Data de Cadastro</td>  <td>{$registro.dt_cadastro|date_format:"%d/%m/%Y %H:%M:%S"}</td>                               
                                                 </tbody>
                                             </table> 
