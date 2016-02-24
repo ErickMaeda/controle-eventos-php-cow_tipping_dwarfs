@@ -26,11 +26,11 @@ class participacao extends controller {
         }
         $inicio = $pc - 1;
         $inicio = $inicio * $total_reg;
-        
+
         $modelEvento = new eventoModel();
         $resEvento = $modelEvento->getEvento('stat<>0');
         $this->smarty->assign('evento', $resEvento);
-        
+
         $model = new model();
         $qry_limitada = $model->readSQL(" SELECT "
                 . " ec . *,"
@@ -224,7 +224,7 @@ class participacao extends controller {
         if ($this->getParam('id_cliente') != null) {
             $modelEvento = new eventoModel();
             $resEvento = $modelEvento->getEvento('stat<>0');
-            $this->smarty->assign('listevento', $resEventoCliente);
+            $this->smarty->assign('paginador', $this->mostraGrid());
             $this->smarty->assign('evento', $resEvento);
             $this->smarty->assign('title', 'participacao');
             $this->smarty->assign('id_cliente', $this->getParam('id_cliente'));
