@@ -4,14 +4,46 @@ include_once 'sessionController.php';
 
 class evento extends controller {
 
-    public function index_action() {
+    public function index_action($pagina = 1) {
         $session = new session();
         $session->sessao_valida();
-        $model = new model();
-        $res = $model->readSQL('SELECT e.*,c.des_cidade FROM evento e LEFT JOIN cidade c ON (c.id_cidade=e.id_cidade) WHERE e.stat<>0'); //Full table Scan :( or :)         
-        $this->smarty->assign('listevento', $res);
+        $_SESSION['pagina'] = $pagina;
+
+        $this->smarty->assign('paginador', $this->mostraGrid());
         $this->smarty->assign('title', 'Eventos');
         $this->smarty->display('evento/index.tpl');
+    }
+    
+    public function paginacao() {
+        $this->index_action($this->getParam('pagina'));
+    }
+    
+    public function mostraGrid() {
+        $total_reg = "10"; // número de registros por página
+        $pagina = $_SESSION['pagina'];
+
+        if (!$pagina) {
+            $pc = "1";
+        } else {
+            $pc = $pagina;
+        }
+        $inicio = $pc - 1;
+        $inicio = $inicio * $total_reg;
+        //Busca os registros para o Grid
+        $model = new model();
+        $qry_limitada = $model->readSQL("SELECT "
+                . "e.*,"
+                . "c.des_cidade "
+                . "FROM evento e "
+                . "LEFT JOIN cidade c ON (c.id_cidade=e.id_cidade)"
+                . " WHERE e.stat<>0 LIMIT $inicio,$total_reg");
+        $this->smarty->assign('listevento', $qry_limitada);
+
+        // Total de Registros na tabela    
+        $qry_total = $model->readSQL("SELECT count(*)as total FROM evento WHERE stat<>0");
+        $total_registros = $qry_total[0]['total']; //pega o valor
+        $html = $this->paginador($pc, $total_registros, 'evento');
+        return $html;
     }
 
     public function insert() {
@@ -116,7 +148,7 @@ class evento extends controller {
             FROM evento_produto ep 
             LEFT JOIN produto p ON (p.id_produto = ep.id_produto)
             LEFT JOIN evento e ON (e.id_evento = ep.id_evento)
-            WHERE ep.stat<>0 AND ep.id_evento='.$id); //Full table Scan :( or :)
+            WHERE ep.stat<>0 AND ep.id_evento=' . $id); //Full table Scan :( or :)
         $this->smarty->assign('produto_evento', $produto);
         $this->smarty->assign('title_produto', 'Evento Produto');
         $this->smarty->assign('produto', $resProduto);

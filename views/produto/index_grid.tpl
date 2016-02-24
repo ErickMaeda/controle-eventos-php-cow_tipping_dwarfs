@@ -31,7 +31,7 @@
                         {/foreach}          
                     </tbody>
                 </table>
-
+                {$paginador}
             </div>
         </div>
     </div>

@@ -31,6 +31,7 @@
                         {$error}
                     </p>
                 {/if}
+                {$paginador}
             </div>
         </div>
     </div>

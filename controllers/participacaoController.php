@@ -4,27 +4,52 @@ include_once 'sessionController.php';
 
 class participacao extends controller {
 
-    public function index_action() {
+    public function index_action($pagina = 1) {
         $session = new session();
         $session->sessao_valida();
-        $modelEvento = new eventoModel();
-        $resEvento = $modelEvento->getEvento('stat<>0');
-        $model = new model();
-        $resEventoCliente = $model->readSQL(''
-                . ' SELECT '
-                . ' ec . *,'
-                . ' c.nome_cliente,'
-                . ' e.des_evento'
-                . ' FROM evento_cliente ec'
-                . ' LEFT JOIN cliente c ON (c.id_cliente = ec.id_cliente)'
-                . ' LEFT JOIN evento e ON (e.id_evento = ec.id_evento)'
-                . ' WHERE ec.stat <> 0');
-        //send the records to template sytem
-        $this->smarty->assign('evento', $resEvento);
-        $this->smarty->assign('listevento', $resEventoCliente);
+        $_SESSION['pagina'] = $pagina;
+        $this->smarty->assign('paginador', $this->mostraGrid());
+
         $this->smarty->assign('title', 'Participação');
         //call the smarty
         $this->smarty->display('participacao/index.tpl');
+    }
+
+    public function mostraGrid() {
+        $total_reg = "10"; // número de registros por página
+        $pagina = $_SESSION['pagina'];
+
+        if (!$pagina) {
+            $pc = "1";
+        } else {
+            $pc = $pagina;
+        }
+        $inicio = $pc - 1;
+        $inicio = $inicio * $total_reg;
+        
+        $modelEvento = new eventoModel();
+        $resEvento = $modelEvento->getEvento('stat<>0');
+        $this->smarty->assign('evento', $resEvento);
+        
+        $model = new model();
+        $qry_limitada = $model->readSQL(" SELECT "
+                . " ec . *,"
+                . " c.nome_cliente,"
+                . " e.des_evento"
+                . " FROM evento_cliente ec"
+                . " LEFT JOIN cliente c ON (c.id_cliente = ec.id_cliente)"
+                . " LEFT JOIN evento e ON (e.id_evento = ec.id_evento)"
+                . " WHERE ec.stat<>0 LIMIT $inicio,$total_reg");
+        $this->smarty->assign('listevento', $qry_limitada);
+
+        $qry_total = $model->readSQL("SELECT count(*)as total FROM evento_cliente WHERE stat<>0");
+        $total_registros = $qry_total[0]['total']; //pega o valor
+        $html = $this->paginador($pc, $total_registros, 'participacao');
+        return $html;
+    }
+
+    public function paginacao() {
+        $this->index_action($this->getParam('pagina'));
     }
 
     public function cliente_evento_insert() {
@@ -78,14 +103,14 @@ class participacao extends controller {
         }
     }
 
-    function base64_to_jpeg($base64_string, $output_file) {
+    public function base64_to_jpeg($base64_string, $output_file) {
         $ifp = fopen($output_file, "wb");
         fwrite($ifp, base64_decode($base64_string));
         fclose($ifp);
         return( $output_file );
     }
 
-    function cancelarParticipacao() {
+    public function cancelarParticipacao() {
         $id_evento_cliente = $this->getParam('id_evento_cliente');
         $this->updateEventoCliente($id_evento_cliente);
         $this->updateEstoqueProduto($id_evento_cliente);
@@ -93,7 +118,7 @@ class participacao extends controller {
         header('Location: /participacao');
     }
 
-    function updateEstoqueProduto($id_evento_cliente) {
+    public function updateEstoqueProduto($id_evento_cliente) {
         $model = new model();
         $resProdutoEstoque = $model->readSQL("SELECT "
                 . "ep.id_evento, "
@@ -110,7 +135,7 @@ class participacao extends controller {
         }
     }
 
-    function updateEventoCliente($id_evento_cliente) {
+    public function updateEventoCliente($id_evento_cliente) {
         $modelClienteEvento = new eventoClienteModel();
         $data['id_evento_cliente'] = $id_evento_cliente;
         $data['stat'] = 0;
@@ -217,7 +242,7 @@ class participacao extends controller {
         }
     }
 
-    function relatorio() {
+    public function relatorio() {
         $session = new session();
         $session->sessao_valida();
         $model = new model();
