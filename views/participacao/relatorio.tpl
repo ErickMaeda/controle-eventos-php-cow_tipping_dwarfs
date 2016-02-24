@@ -50,7 +50,7 @@
                                                     <tr><td colspan="100%">Tabela Vazia</td></tr>
                                                 {/foreach}          
                                             </tbody>
-                                        </table>
+                                        </table>     
                                     </div>
                                 </div>
                             </div>
