@@ -98,7 +98,7 @@ class participacao extends controller {
                     . "LEFT JOIN evento e ON (e.id_evento = ec.id_evento) "
                     . "WHERE id_evento_cliente = $id_evento_cliente");
             $this->smarty->assign('data', $fill[0]);
-            $this->smarty->assign('title', 'participacao');
+            $this->smarty->assign('title', 'Participação');
             $this->smarty->display('participacao/insert.tpl');
         }
     }
