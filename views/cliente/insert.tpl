@@ -68,6 +68,13 @@
                                                     </select> 
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label for="file">Selecione a imagem para upload: </label>
+                                                    <input class="col-md-12" type="file" class="form-control" name="fileToUpload" id="fileToUpload">
+                                                </div>
+
+                                            </div>
                                             <br>
                                             <button type="submit" class="btn btn-default" style="width: 85px">Salvar</button>
                                             <button type="reset" class="btn btn-default" onclick="window.history.back();" style="width: 85px">Cancelar</button>
